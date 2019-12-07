@@ -4,12 +4,12 @@ const mySidebar = require("./my-sidebar");
 module.exports = {
     title: 'technical-notes',
     description: 'Just playing around',
-    base: '/',
+    base: '/review-notes/',
     markdown: {
         lineNumbers: false // 代码块显示行号
     },
     themeConfig: {
-        lastUpdated: 'Last Updated', // string | boolean
+        lastUpdated: '最后修改时间', // string | boolean
         smoothScroll: true,
         nav: myNav,
         sidebar: mySidebar
