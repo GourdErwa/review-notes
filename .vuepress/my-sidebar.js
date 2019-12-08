@@ -25,7 +25,7 @@ module.exports = {
                 ['类型系统', '类型系统'],
                 ['开发前准备与模拟数据集介绍', '开发前准备与模拟数据集介绍'],
                 ['基础API概览', '基础API概览'],
-                ['Environment概览', 'Environment概览'],
+                ['Environment概览', 'Environment概览']
             ]
         },
         {

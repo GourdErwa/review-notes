@@ -19,7 +19,7 @@ git commit -m 'deploy'
 ##如果发布到 https://GourdErwa.github.io
 ##git push -f git@github.com:GourdErwa/review-notes.git master
 
-##如果发布到 https://GourdErwa.github.io/<REPO>
+##如果发布到 https://GourdErwa.github.io/review-notes
 git push -f git@github.com:GourdErwa/review-notes.git master:gh-pages
 
 cd -

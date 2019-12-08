@@ -2,7 +2,7 @@ const myNav = require("./my-nav.js");
 const mySidebar = require("./my-sidebar");
 
 module.exports = {
-    title: 'review-notes',
+    title: '复盘笔记（review-notes）',
     description: 'review notes',
     base: '/review-notes/',
     markdown: {
@@ -34,9 +34,17 @@ module.exports = {
         // 默认为 "Edit this page"
         editLinkText: '帮助我们改善此页面'
     },
-    plugins: ['autobar', 'back-to-top', '@vuepress/active-header-links', {
-        sidebarLinkSelector: '.sidebar-link',
-        headerAnchorSelector: '.header-anchor'
-    }]
+    plugins: ['@vuepress/nprogress','@vuepress/medium-zoom',
+        '@vuepress/back-to-top',
+        '@vuepress/active-header-links', {
+            sidebarLinkSelector: '.sidebar-link',
+            headerAnchorSelector: '.header-anchor'
+        },
+        [
+            '@vuepress/google-analytics',
+            {
+                'ga': 'UA-154222368-1' // UA-00000000-0
+            }
+        ]]
 }
 ;
