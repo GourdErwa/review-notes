@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{208:function(t,e,s){"use strict";s.r(e);var n=s(0),o=Object(n.a)({},(function(){var t=this.$createElement,e=this._self._c||t;return e("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}},[e("blockquote",[e("p",[this._v("for test page.")])])])}),[],!1,null,null,null);e.default=o.exports}}]);
