@@ -1,7 +1,9 @@
->该专栏内容与 [flink-basis](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) 同步，源码与 [flink-advanced](https://github.com/GourdErwa/flink-advanced) 同步。
+>专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
 本节内容对应[官方文档](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/stream/operators/process_function.html#process-function-low-level-operations)  
 
-# 1.ProcessFunction
+[[toc]]
+
+## 1 ProcessFunction
 
 ProcessFunction 是一个低阶的流处理操作，它可以访问流处理程序的基础构建模块:
 1. **事件**(event)(流元素)。
@@ -17,7 +19,7 @@ ProcessFunction 可以看作是一个具有 keyed state 和 timers 访问权的 
 >注意如果要访问 **keyed state 和 timers**，则必须ProcessFunction在`keyed stream`上应用：  
 >`stream.keyBy(...).process(new MyProcessFunction())`
 
-# 2.低阶Join（Low-level Joins）
+## 2 低阶Join（Low-level Joins）
 要在两个输入上实现低级JOIN操作，应用程序可以使用`CoProcessFunction`或`KeyedCoProcessFunction`。  
 此函数绑定到两个不同的输入，并从两个不同的输入中获取单独的调用，`processElement1(...)`/`processElement2(...)`。
 
@@ -28,7 +30,7 @@ ProcessFunction 可以看作是一个具有 keyed state 和 timers 访问权的 
 
 >例如：当为客户数据保存状态时，你可能会join客户数据和财务交易
 
-# 3.示例
+## 3 示例
 对应[示例源码](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/streaming/operators/process_function/ProcessFunction.scala)
 ```java
 /** 在以下示例中，KeyedProcessFunction 为每个键维护一个计数，并且会把一分钟(事件时间)内没有更新的键/值对输出
@@ -102,18 +104,18 @@ class CountWithTimeoutFunction extends KeyedProcessFunction[Tuple, (String, Stri
   }
 }
 ```
-# 4.定时器（Timers）
+## 4 定时器（Timers）
 `TimerService` 在内部维护两种类型的定时器（处理时间和事件时间定时器）并排队执行。
 
 `TimerService` 会删除每个键和时间戳重复的定时器，即每个键在每个时间戳上最多有一个定时器。如果为同一时间戳注册了多个定时器，则只会调用一次 onTimer（） 方法。
 
  >Flink同步调用 onTimer() 和 processElement() 方法。因此，用户不必担心状态的并发修改。
  
-# 5.容错（Fault Tolerance）
+## 5 容错（Fault Tolerance）
 定时器具有容错能力，并且与应用程序的状态一起进行快照。如果故障恢复或从保存点启动应用程序，就会恢复定时器。
 > 在故障恢复之前应该触发的处理时间定时器会被立即触发。当应用程序从故障中恢复或从保存点启动时，可能会发生这种情况。
 
-# 6.定时器合并（Timer Coalescing）
+## 6 定时器合并（Timer Coalescing）
 由于 Flink 仅为每个键和时间戳维护一个定时器，因此可以通过降低定时器的频率来进行合并以减少定时器的数量。
 
 

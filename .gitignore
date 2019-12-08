@@ -1,5 +1,5 @@
 /.idea/
 /.vuepress/dist/
 
-# Project exclude paths
+##Project exclude paths
 /node_modules/

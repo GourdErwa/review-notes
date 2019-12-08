@@ -1,8 +1,8 @@
-   
->该专栏内容与 [flink-basis](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) 同步，源码与 [flink-advanced](https://github.com/GourdErwa/flink-advanced) 同步。
+>专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
 本节内容对应[官方文档](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/event_time.html)，本节内容对应[示例源码](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/streaming/Watermark.scala)  
-   
-# 1 Time（时间）
+
+[[toc]]
+## 1 Time（时间）
 所有由Flink 事件-时间流应用生成的条目都必须伴随着一个时间戳。时间戳将一个条目与一个特定的时间点关联起来，一般这个时间点表示的是这条record发生的时间。不过application可以随意选择时间戳的含义，只要流中条目的时间戳是随着流的前进而递增即可。
 &emsp;    
 
@@ -21,7 +21,7 @@
 >- [流式处理概念:时间域、窗口化](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101)， [中文译文](http://09itblog.site/?p=270)
 >- [流式处理概念:水印、触发器、积累模式](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-102)， [中文译文](http://09itblog.site/?p=279)
 >- [流式处理概念:会话窗口](https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/43864.pdf),  [中文译文](http://09itblog.site/?p=283)
-## 如何设置时间域
+### 如何设置时间域
 ```java
 val env = StreamExecutionEnvironment.getExecutionEnvironment
 // 默认使用 TimeCharacteristic.ProcessTime
@@ -31,7 +31,7 @@ env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime)
 // env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime)
 // env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
 ```
-# 2 Watermark（水印/水位线）
+## 2 Watermark（水印/水位线）
 实时系统中，由于各种原因造成的延时，造成某些消息发到flink的时间延时于事件产生的时间。  
 如果基于`event time`构建`window`，但是对于迟到的事件，我们又不能无限期的等下去，必须要有个机制来保证一个特定的时间后，必须触发`window`去进行计算了。这个特别的机制，就是Watermark。
 
@@ -50,16 +50,18 @@ Watermarks(水印)处理机制如下：
 3. 表示比watermark更早(更老)的事件都已经到达(没有比水位线更低的数据 )。
 4. 基于watermark来进行窗口触发计算的判断。
 
-## 2.1 有序流中 Watermarks
+### 2.1 有序流中 Watermarks
 某些情况下，基于Event Time的数据流是有续的(相对event time)。  
 在有序流中，watermark就是一个简单的周期性标记。
+
 ![stream_watermark_in_order](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/stream_watermark_in_order.png)
-## 2.2 乱序流中 Watermarks
+### 2.2 乱序流中 Watermarks
 在更多场景下，基于Event Time的数据流是无续的(相对event time)。
 
 在无序流中，Watermarks 至关重要，他告诉 operator 比 Watermarks 更早(更老/时间戳更小)的事件已经到达，operator 可以将内部事件时间提前到Watermarks的时间戳(可以触发window计算)
+
 ![stream_watermark_out_of_order](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/stream_watermark_out_of_order.png)
-## 2.3 并行流中的 Watermarks
+### 2.3 并行流中的 Watermarks
 通常情况下， watermark 在源函数中或源函数后生成。如果指定多次 watermark，后面指定的 watermark 会覆盖前面的值。 源函数的每个 sub-task 独立生成水印。
 
 随着水印在算子操作中的流动，它们会提前到达其到达的算子操作的事件时间。每当算子操作提前其事件时间时，同时算子操作会为下游生成一个新的 watermark。
@@ -82,8 +84,8 @@ Flink 的水印处理以及传播算法,确保了operator task恰当地释放一
 
 ![parallel_streams_watermarks](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/parallel_streams_watermarks.png)
 
-# 3 指定 Timestamp 与生成 Watermarks
-## 3.1 SourceFunction 直接定义 Timestamp 与 Watermarks
+## 3 指定 Timestamp 与生成 Watermarks
+### 3.1 SourceFunction 直接定义 Timestamp 与 Watermarks
 ```java
 class GameSourceFunction[T <: GameModel](seq: Seq[T], millis: Long = 0) extends SourceFunction[T] {
 
@@ -108,7 +110,7 @@ class GameSourceFunction[T <: GameModel](seq: Seq[T], millis: Long = 0) extends 
   }
 }
 ```
-## 3.2 通过Flink提供的 Timestamp Assigner 指定 Timestamp 与 Watermarks
+### 3.2 通过Flink提供的 Timestamp Assigner 指定 Timestamp 与 Watermarks
 
 Flink 提供了两个接口用于指定 Timestamp 与 Watermarks
 - `AssignerWithPeriodicWatermarks`  按时间间隔周期性生成 Watermarks 
@@ -130,7 +132,7 @@ def assignTimestampsAndWatermarks(assigner: AssignerWithPunctuatedWatermarks[T])
 sEnv.setStreamTimeCharacteristic(TimeCharacteristic.EventTime) // 设置时间域
 stream.assignTimestampsAndWatermarks(new GameAscendingTimestampExtractor[UserLogin]) // 设置水印生成器
 ```
-### 3.2.1 AssignerWithPeriodicWatermarks（周期性水印生成器）
+####3.2.1 AssignerWithPeriodicWatermarks（周期性水印生成器）
 通过定义生成水印的间隔（每n毫秒） `ExecutionConfig.setAutoWatermarkInterval(...)`。   
 调用`AssignerWithPeriodicWatermarks`的`getCurrentWatermark()`方法，如果返回的水印非空且大于前一个水印，则覆盖以前的水印。
 
@@ -139,17 +141,17 @@ stream.assignTimestampsAndWatermarks(new GameAscendingTimestampExtractor[UserLog
 - ExecutionConfig.setAutoWatermarkInterval(msec) (默认是 200ms, 设置 Watermarks 发送的周期)
 - 实现 `AssignerWithPeriodicWatermarks` 接口
 
-#### 3.2.1.1 Flink-API提供：时间戳单调递增的分配器
+##### 3.2.1.1 Flink-API提供：时间戳单调递增的分配器
 适用于 event-time 戳单调递增的场景，数据没有太多延时。  
 >底层实现为 `AscendingTimestampExtractor<T> implements AssignerWithPeriodicWatermarks<T>`
 
 `val withTimestampsAndWatermarks = stream.assignAscendingTimestamps( _.getCreationTime )`
 
-#### 3.2.1.2 Flink-API提供：允许固定延迟的分配器
+##### 3.2.1.2 Flink-API提供：允许固定延迟的分配器
 适用于预先知道最大延迟的场景(例如最多比之前的元素延迟3000ms)。  
 >底层实现为 `BoundedOutOfOrdernessTimestampExtractor<T> implements AssignerWithPeriodicWatermarks<T>`
 
-#### 3.2.1.3 自定义实现 AssignerWithPeriodicWatermarks 示例
+##### 3.2.1.3 自定义实现 AssignerWithPeriodicWatermarks 示例
 ```java
 
 // 设置水印生成器
@@ -195,7 +197,7 @@ class TimeLagWatermarkGenerator[T <: GameModel] extends AssignerWithPeriodicWate
     new Watermark(System.currentTimeMillis() - maxTimeLag)
 }
 ```
-### 3.2.2 AssignerWithPunctuatedWatermarks（条件水印生成器）
+#### 3.2.2 AssignerWithPunctuatedWatermarks（条件水印生成器）
 使用 `AssignerWithPunctuatedWatermarks`接口。  
 首先调用该 `extractTimestamp(...)`方法为元素分配时间戳，然后立即调用`checkAndGetNextWatermark(...)`方法。  
 如果返回的水印非空且大于前一个水印，则覆盖以前的水印。
@@ -223,7 +225,7 @@ class PunctuatedAssigner[T <: GameModel] extends AssignerWithPunctuatedWatermark
   }
 }
 ```
-# 4.为每个Kafka分区分配时间戳/水印
+## 4.为每个Kafka分区分配时间戳/水印
 当 kafka 作为数据源时，kafka 的每个 Partition 分区里面时间戳可能是升序或者乱序模式。通常情况，我们会多个 Partition 分区并行处理，我们可以为 kafka 配置水印。
 kafka 内部为每个 Partition 分区维护一个水印，并且在流进行 shuffle 时以**2.3 并行流中的 Watermarks**进行水印合并
 ```java

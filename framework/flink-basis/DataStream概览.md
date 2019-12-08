@@ -1,7 +1,8 @@
-
->该专栏内容与 [flink-basis](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) 同步，源码与 [flink-advanced](https://github.com/GourdErwa/flink-advanced) 同步。
+>专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
 本节内容对应[官方文档](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/datastream_api.html)
-# 示例程序
+
+[[toc]]
+## 1 简单示例程序
 [示例源码](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/streaming/StreamingSimple.scala)
 ```java
 object StreamingSimple extends StreamExecutionEnvironmentApp {
@@ -28,28 +29,28 @@ object StreamingSimple extends StreamExecutionEnvironmentApp {
    */
 }
 ```  
-# Data Sources（数据源）
-## 基于文件
+## 2 Data Sources（数据源）
+### 基于文件
 - `createInput(inputFormat)`-自定义文件基础类
 - `readTextFile(path)// TextInputFormat`-逐行读取文件，并将它们作为字符串返回。
 - `readFile(fileInputFormat, path)`-根据指定的文件输入格式读取（一次）文件。
 - `readFile(fileInputFormat, path, watchType, interval, pathFilter)-`-监控文件并读取数据
 - `readFileOfPrimitives(path, delimiter)`// PrimitiveInputFormat-解析以换行符（或其他char序列）定界的原始数据类型的文件，例如String或Integer使用给定的定界符。
 - `readSequenceFile(Key, Value, path)`// SequenceFileInputFormat-创建JobConf并从指定的路径中读取类型为SequenceFileInputFormat，Key类和Value类的文件，并将它们作为Tuple2 <Key，Value>返回。
-## 基于套接字
+### 基于套接字
 - `socketTextStream`-从socket读取。数据可以由分隔符分割。
-## 基于集合
+### 基于集合
 - `fromCollection(Seq)`-从Java Java.util.Collection创建数据流。集合中的所有数据必须具有相同的类型。不能并行执行（并行度=1）
 - `fromCollection(Iterator)`-从迭代器创建数据流。该类指定迭代器返回的数据的数据类型。不能并行执行（并行度=1）
 - `fromElements(elements: _*)`-从给定的对象序列创建数据流。所有对象必须具有相同的类型。不能并行执行（并行度=1）
 - `fromParallelCollection(SplittableIterator)`-从迭代器并行创建数据流。该类指定迭代器返回的数据的数据类型。
 - `generateSequence(from, to)` -并行生成给定间隔中的数字序列。
-## 自定义
+### 自定义
 - `addSource`-自定义`SourceFunction`数据源读取。
 
-# DataStream Transformations（转换操作）
+## 3 DataStream Transformations（转换操作）
 
-# Data Sinks（输出端）
+## 4 Data Sinks（输出端）
 - `writeAsText()/ TextOutputFormat`-将数据按行写为字符串。通过调用每个数据的toString方法获得字符串。
 - `writeAsCsv(...)/ CsvOutputFormat`-将元组写为逗号分隔的值文件。行和字段定界符是可配置的。每个字段的值来自对象的toString方法。
 - `print()/ printToErr()` - 在标准输出/标准错误流上打印每个数据的toString（）值。可以提供前缀字符串区分不同的打印调用。如果并行度大于1，则输出之前还将带有产生输出的任务的标识符。
@@ -69,28 +70,28 @@ import scala.collection.JavaConverters.asScalaIteratorConverter
 val myResult: DataStream[(String, Int)] = ...
 val myOutput: Iterator[(String, Int)] = DataStreamUtils.collect(myResult.javaStream).asScala
 ```
-# Operators（算子）
-## Transformation（转换操作）
-### Map
+## 5 Operators（算子）
+### Transformation（转换操作）
+#### Map
 **DataStream -> DataStream**  
 一个元素转换为一个新的元素
 ```java
 dataStream.map { x => x * 2 }
 ```    
-### FlatMap
+#### FlatMap
 **DataStream -> DataStream**     
 一个元素转换为零个，一个或多个新的元素    	
 ```java
 dataStream.flatMap { str => str.split(" ") }
 ```    
-### Filter
+#### Filter
 **DataStream -> DataStream**   
 
 为每个元素执行boolean函数判断，仅返回为true的元素   
 ```java
 dataStream.filter { _ != 0 }
 ```   
-### KeyBy
+#### KeyBy
 **DataStream -> KeyedStream**	
 
 在逻辑上将流划分为不相交的分区，每个分区都包含同一键的元素。在内部是通过哈希分区实现的
@@ -98,14 +99,14 @@ dataStream.filter { _ != 0 }
 dataStream.keyBy("someKey") // Key by field "someKey"
 dataStream.keyBy(0) // Key by the first element of a Tuple
 ```    
-### Reduce
+#### Reduce
 **KeyedStream -> DataStream**
 
 对`KeyedStream`进行`reduce`函数操作
 ```java
 keyedStream.reduce { _ + _ }
 ```            
-### Fold
+#### Fold
 **KeyedStream -> DataStream**
 	
 对`KeyedStream`进行`fold`函数操作
@@ -113,7 +114,7 @@ keyedStream.reduce { _ + _ }
 val result: DataStream[String] =
     keyedStream.fold("start")((str, i) => { str + "-" + i })
 ```          
-### Aggregations
+#### Aggregations
 **KeyedStream -> DataStream**	
 
 对`KeyedStream`进行`Aggregations`函数操作，支持求最大、最小、和运算
@@ -129,7 +130,7 @@ keyedStream.minBy("key")
 keyedStream.maxBy(0)
 keyedStream.maxBy("key")
 ```    
-### Window
+#### Window
 **KeyedStream -> WindowedStream**	
 
 在已经分区的`KeyedStream`上定义Windows。 Windows根据某些特征将每个键中的数据分组（例如，最近5秒钟内到达的数据）
@@ -137,7 +138,7 @@ keyedStream.maxBy("key")
 // Last 5 seconds of data
 dataStream.keyBy(0).window(TumblingEventTimeWindows.of(Time.seconds(5))) 
 ``` 
-### WindowAll
+#### WindowAll
 **DataStream -> AllWindowedStream**	
 
 Windows可以在常规DataStreams上定义。 Windows会根据某些特征（例如，最近5秒钟内到达的数据）对所有流事件进行分组
@@ -147,7 +148,7 @@ Windows可以在常规DataStreams上定义。 Windows会根据某些特征（例
 // Last 5 seconds of data
 dataStream.windowAll(TumblingEventTimeWindows.of(Time.seconds(5))) 
 ```  
-### Window Apply
+#### Window Apply
 **WindowedStream -> DataStream**
 
 **AllWindowedStream -> DataStream**	
@@ -159,13 +160,13 @@ windowedStream.apply { WindowFunction }
 // applying an AllWindowFunction on non-keyed window stream
 allWindowedStream.apply { AllWindowFunction }
 ```
-### Window Reduce
+#### Window Reduce
 **WindowedStream -> DataStream**	
 将reduce函数应用于窗口，并返回减小的值。
 ```java
 windowedStream.reduce { _ + _ }
 ```
-### Window Fold
+#### Window Fold
 **WindowedStream -> DataStream**	
 
 在`WindowedStream`上应用`fold`函数
@@ -173,7 +174,7 @@ windowedStream.reduce { _ + _ }
 val result: DataStream[String] =
     windowedStream.fold("start", (str, i) => { str + "-" + i })
 ```          
-### Aggregations on windows
+#### Aggregations on windows
 **WindowedStream -> DataStream**	
 
 对`WindowedStream`进行`Aggregations`函数操作，支持求最大、最小、和运算
@@ -189,7 +190,7 @@ windowedStream.minBy("key")
 windowedStream.maxBy(0)
 windowedStream.maxBy("key")
 ```    
-### Union
+#### Union
 **`DataStream*` -> DataStream**	
 
 两个或多个`DataStream`的并集，创建一个包含所有流中所有元素的新流。
@@ -197,7 +198,7 @@ windowedStream.maxBy("key")
 ```java
 dataStream.union(otherStream1, otherStream2, ...)
 ```    
-### Window Join
+#### Window Join
 **DataStream,DataStream -> DataStream**	
 
 在给定键和一个公共窗口上连接两个数据流。
@@ -207,7 +208,7 @@ dataStream.join(otherStream)
     .window(TumblingEventTimeWindows.of(Time.seconds(3)))
     .apply { ... }
 ```    
-### Window CoGroup
+#### Window CoGroup
 **DataStream,DataStream -> DataStream**	
 
 在给定键和公共窗口上将两个数据流组合在一起。
@@ -217,7 +218,7 @@ dataStream.coGroup(otherStream)
     .window(TumblingEventTimeWindows.of(Time.seconds(3)))
     .apply {}
 ```    
-### Connect
+#### Connect
 **DataStream,DataStream -> ConnectedStreams**	
 
 “连接”两个保留其类型的数据流，从而允许两个流之间共享状态。
@@ -227,7 +228,7 @@ otherStream : DataStream[String] = ...
 
 val connectedStreams = someStream.connect(otherStream)
  ```   
-### CoMap, CoFlatMap
+#### CoMap, CoFlatMap
 **ConnectedStreams -> DataStream**	
 
 与`DataStream`的map和flatMap相似，使用类型匹配匹配流进行计算
@@ -241,7 +242,7 @@ connectedStreams.flatMap(
     (_ : String) => false
 )
 ```    
-### Split
+#### Split
 **DataStream -> SplitStream**	
 
 根据某些*标准*将流分成两个或多个流。
@@ -254,7 +255,7 @@ val split = someDataStream.split(
     }
 )
 ```                
-### Select
+#### Select
 **SplitStream -> DataStream**	
 
 从拆分流中选择一个或多个流。
@@ -263,7 +264,7 @@ val even = split select "even"
 val odd = split select "odd"
 val all = split.select("even","odd")
 ```                
-### Iterate
+#### Iterate
 **DataStream -> IterativeStream -> DataStream**	
 
 DataStream 迭代计算
@@ -275,14 +276,14 @@ initialStream.iterate {
   }
 }
 ```                
-### Extract Timestamps
+#### Extract Timestamps
 **DataStream -> DataStream**	
 
 从记录中提取时间戳，以便与使用事件时间语义的窗口一起使用。请参`5.1-Flink DataStream时间机制(Time&Watermark)`。
 ```java
 stream.assignTimestamps { timestampExtractor }
 ```
-### extensions API（扩展 API）
+#### extensions API（扩展 API）
 利用类型匹配计算，支持API参考 [scala_api_extensions](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/scala_api_extensions.html#datastream-api)
 ```java
 import org.apache.flink.streaming.api.scala.extensions._
@@ -291,18 +292,18 @@ data.mapWith {
   case (_, value) => value.toString
 }
 ```
-## Physical partitioning（物理分区）
-### Custom partitioning（自定义分区）
+### Physical partitioning（物理分区）
+#### Custom partitioning（自定义分区）
 ```java
 dataStream.partitionCustom(partitioner, "someKey")
 dataStream.partitionCustom(partitioner, 0)
 ```
-### Random partitioning（随机分区）
+#### Random partitioning（随机分区）
 `dataStream.shuffle()`
-### Rebalancing（重新负载分区）
+#### Rebalancing（重新负载分区）
 内容使用`round robin`方法将数据均匀打散。存在数据偏斜的情况下对性能优化有用。
 `dataStream.rebalance()`
-### Rescaling（重新缩放）
+#### Rescaling（重新缩放）
 通过执行oepration算子来实现的。由于这种方式仅发生在一个单一的节点，因此没有跨网络的数据传输。
 
 
@@ -311,26 +312,26 @@ dataStream.partitionCustom(partitioner, 0)
 >Rebalancing会产生全量重分区，而Rescaling不会。
 
 `dataStream.rescale()`
-### Broadcasting（广播）
+#### Broadcasting（广播）
 广播用于将dataStream所有数据发到每一个partition。
 `inputStream.broadcast()`
 
-## 算子链和任务槽
+### 算子链和任务槽
 - Flink出于分布式执行的目的，将 operator 的 subtask 链接在一起形成 task（类似spark中的管道）。
 - 每个 task 在一个线程中执行。
 - 将 operators 链接成 task 是非常有效的优化：它可以减少线程与线程间的切换和数据缓冲的开销，并在降低延迟的同时提高整体吞吐量。
 >参考***《运行环境》***内容
-### 开始新算子链
+#### 开始新算子链
 `someStream.filter(...).map(...).startNewChain().map(...)`
-### 禁用算子链
+#### 禁用算子链
 `someStream.map(...).disableChaining()`
-### 显示指定任务槽
+#### 显示指定任务槽
 `someStream.filter(...).slotSharingGroup("name")`
 
-# 容错能力
+## 6 容错能力
 >参考[7.0-Flink状态与容错](https://github.com/GourdErwa/flink-advanced/blob/master/flink-notes/7.0-Flink%E7%8A%B6%E6%80%81%E4%B8%8E%E5%AE%B9%E9%94%99.md)
 
-# 延迟控制
+## 7 延迟控制
 默认情况下，数据不会在网络上一对一传输（这会导致不必要的网络通信），但是会进行缓冲。
 
 

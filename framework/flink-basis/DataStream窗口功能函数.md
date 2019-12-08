@@ -1,8 +1,8 @@
-   
->该专栏内容与 [flink-basis](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) 同步，源码与 [flink-advanced](https://github.com/GourdErwa/flink-advanced) 同步。
+>专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
 本节内容对应[官方文档](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/stream/operators/windows.html#window-functions)，本节内容对应[示例源码](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/streaming/operators/windows/functions)  
-   
-# 1 窗口函数概念
+
+[[toc]]   
+### 1 窗口函数概念
 窗口函数为每个窗口上执行计算。一旦确定某个窗口已准备好进行处理，就可以使用该窗口函数来处理每个（可能是Keyed Windows）窗口的元素
 >窗口机制（请参考：5.3-Flink DataStream窗口机制(Window)）
 
@@ -17,7 +17,7 @@
 - FoldFunction
 分别对应函数为.reduce/aggregate/fold/apply()中需要做的操作。
 >废弃说明：fold、apply已废弃推荐使用 aggregate 函数，废弃的函数不进行文档说明
-## 1.1 WindowFunction与ProcessWindowFunction区别
+#### 1.1 WindowFunction与ProcessWindowFunction区别
 分析提供方法，对于各类型函数提供了 WindowFunction与ProcessWindowFunction 方法，使用reduce相关函数分析关联关系如下：
 ![WindowFunction_comparison](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/WindowFunction_comparison.png)
 
@@ -28,7 +28,7 @@
 
 **区别点主要为**：WindowFunction可以访问当前窗口，ProcessWindowFunction可以访问当前Context
 
-## 1.2 ProcessWindowFunction
+#### 1.2 ProcessWindowFunction
 该函数获取一个Iterable，该Iterable包含窗口的所有元素，以及一个Context 对象，该对象可以访问时间和状态信息，从而使其比其他窗口函数更具灵活性
 这是以性能和资源消耗为代价的，因为无法增量聚合元素，而是需要在内部对其进行缓冲，直到将窗口数据全部准备好进行处理为止。
 &emsp;    
@@ -79,7 +79,7 @@ object ApplyProcessWindowFunction extends WindowedStreamFunctions {
 
 }
 ```
-## 1.3 WindowFunction
+#### 1.3 WindowFunction
 使用 `WindowFunction` 函数
 参考 `ApplyProcessWindowFunction` 中 ProcessWindowFunction 用法，相对于 ProcessWindowFunction，WindowFunction 不可访问 context 内容
 &emsp;    
@@ -112,7 +112,7 @@ object ApplyWindowFunction extends WindowedStreamFunctions {
 }
 ```
 
-## 1.4 reduce
+#### 1.4 reduce
 将输入中的两个元素组合在一起以产生相同类型的输出元素
 ```java
 object ApplyReduce extends WindowedStreamFunctions {
@@ -124,7 +124,7 @@ object ApplyReduce extends WindowedStreamFunctions {
   sEnv.execute(this.getClass.getName)
 }
 ```
-## 1.5 aggregate
+#### 1.5 aggregate
 Flink 的`AggregateFunction`是一个基于中间计算结果状态进行增量计算的函数。  
 由于是迭代计算方式，所以，在窗口处理过程中，不用缓存整个窗口的数据，所以效率执行比较高。
 &emsp;    
@@ -177,7 +177,7 @@ object ApplyAggregate extends WindowedStreamFunctions {
 }
 ```
 
-# 2 具有增量聚合的窗口函数
+### 2 具有增量聚合的窗口函数
 增量聚合函数，支持组合(预处理函数+窗口函数)
 - pre-Function[T] + ProcessWindowFunction[T, R, K, W]
 - pre-Function[T] + WindowFunction[T, R, K, W]
