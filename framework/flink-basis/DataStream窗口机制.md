@@ -50,7 +50,7 @@ stream
 
   sEnv.execute(this.getClass.getName)
 ```
-### 1.1 Keyed Windows（按key分隔的窗口）
+### 1.1 Keyed Windows
 `keyBy(...).window(...) call for the keyed streams `  
 >拥有`keyed streams`将使窗口化计算可以由多个任务**并行执行**，因为每个逻辑`keyed streams`都可以独立于其余逻辑流进行处理。引用同一键的所有元素将被发送到同一并行任务。
 ```
@@ -64,7 +64,7 @@ stream
        .reduce/aggregate/fold/apply()      <-  required: "function"
       [.getSideOutput(...)]      <-  optional: "output tag"
 ```  
-### 1.2 Non-Keyed Windows（未按key分隔的窗口）
+### 1.2 Non-Keyed Windows
 `windowAll(...) for non-keyed streams`  
 >原始流将不会拆分为多个逻辑流，并且所有窗口逻辑将由单个任务执行，即并行度为1
 ```  

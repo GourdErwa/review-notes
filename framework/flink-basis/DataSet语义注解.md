@@ -9,7 +9,7 @@
 
 >注意：语义注解的使用是可选的。但是，在提供语义注解时保守是绝对至关重要的！错误的语义注解将导致Flink对您的程序做出错误的假设，并最终可能导致错误的结果。如果操作员的行为无法明确预测，则不应提供注释。请仔细阅读文档。
 
-## 1 Forwarded Fields Annotation（转发字段注解）
+## 1 转发字段注解
 转发字段信息声明了输入字段，该字段未经修改就被函数转发到输出中的相同位置或另一个位置。  
 优化器使用此信息来推断函数是否保留了诸如排序或分区之类的数据属性。  
 
@@ -56,12 +56,12 @@ class MyForwardedFieldsMap extends MapFunction[UserLogin, (Int, String, String)]
 - @ForwardedFieldsFirst 具有两个输入（例如Join和CoGroup）的函数的第一个输入。
 - @ForwardedFieldsSecond 具有两个输入（例如Join和CoGroup）的函数的第二个输入。
 
-### 1.2 运算符参数
+### 1.2 函数操作指定
 - data.map(myMapFnc).withForwardedFields() 用于单个输入功能，例如Map和Reduce。
 - data1.join(data2).where().equalTo().with(myJoinFnc).withForwardFieldsFirst() 具有两个输入（例如Join和CoGroup）的函数的第一个输入。
 - data1.join(data2).where().equalTo().with(myJoinFnc).withForwardFieldsSecond() 具有两个输入（例如Join和CoGroup）的函数的第二个输入。
 
-## 2 Non-Forwarded Fields（非转发字段注解）
+## 2 非转发字段注解
 声明了非转发字段，未声明的默认为转发字段
 >具有相反语义的声明方式与转发字段一致，且仅可通过注解方式声明
 * [[org.apache.flink.api.java.functions.FunctionAnnotation.NonForwardedFields]]

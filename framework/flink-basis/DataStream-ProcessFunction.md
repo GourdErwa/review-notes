@@ -30,7 +30,7 @@ ProcessFunction 可以看作是一个具有 keyed state 和 timers 访问权的 
 
 >例如：当为客户数据保存状态时，你可能会join客户数据和财务交易
 
-## 3 示例
+## 3 示例代码
 对应[示例源码](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/streaming/operators/process_function/ProcessFunction.scala)
 ```java
 /** 在以下示例中，KeyedProcessFunction 为每个键维护一个计数，并且会把一分钟(事件时间)内没有更新的键/值对输出

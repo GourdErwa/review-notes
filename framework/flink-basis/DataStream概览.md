@@ -48,9 +48,7 @@ object StreamingSimple extends StreamExecutionEnvironmentApp {
 ### 自定义
 - `addSource`-自定义`SourceFunction`数据源读取。
 
-## 3 DataStream Transformations（转换操作）
-
-## 4 Data Sinks（输出端）
+## 3 Data Sinks（输出端）
 - `writeAsText()/ TextOutputFormat`-将数据按行写为字符串。通过调用每个数据的toString方法获得字符串。
 - `writeAsCsv(...)/ CsvOutputFormat`-将元组写为逗号分隔的值文件。行和字段定界符是可配置的。每个字段的值来自对象的toString方法。
 - `print()/ printToErr()` - 在标准输出/标准错误流上打印每个数据的toString（）值。可以提供前缀字符串区分不同的打印调用。如果并行度大于1，则输出之前还将带有产生输出的任务的标识符。
@@ -70,7 +68,7 @@ import scala.collection.JavaConverters.asScalaIteratorConverter
 val myResult: DataStream[(String, Int)] = ...
 val myOutput: Iterator[(String, Int)] = DataStreamUtils.collect(myResult.javaStream).asScala
 ```
-## 5 Operators（算子）
+## 4 Operators（算子）
 ### Transformation（转换操作）
 #### Map
 **DataStream -> DataStream**  
@@ -328,10 +326,10 @@ dataStream.partitionCustom(partitioner, 0)
 #### 显示指定任务槽
 `someStream.filter(...).slotSharingGroup("name")`
 
-## 6 容错能力
+## 5 容错能力
 >参考[7.0-Flink状态与容错](https://github.com/GourdErwa/flink-advanced/blob/master/flink-notes/7.0-Flink%E7%8A%B6%E6%80%81%E4%B8%8E%E5%AE%B9%E9%94%99.md)
 
-## 7 延迟控制
+## 6 延迟控制
 默认情况下，数据不会在网络上一对一传输（这会导致不必要的网络通信），但是会进行缓冲。
 
 

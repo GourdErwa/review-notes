@@ -21,7 +21,9 @@
 >- [流式处理概念:时间域、窗口化](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101)， [中文译文](http://09itblog.site/?p=270)
 >- [流式处理概念:水印、触发器、积累模式](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-102)， [中文译文](http://09itblog.site/?p=279)
 >- [流式处理概念:会话窗口](https://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/43864.pdf),  [中文译文](http://09itblog.site/?p=283)
-### 如何设置时间域
+
+***
+**如何设置时间域？**
 ```java
 val env = StreamExecutionEnvironment.getExecutionEnvironment
 // 默认使用 TimeCharacteristic.ProcessTime
@@ -85,7 +87,7 @@ Flink 的水印处理以及传播算法,确保了operator task恰当地释放一
 ![parallel_streams_watermarks](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/parallel_streams_watermarks.png)
 
 ## 3 指定 Timestamp 与生成 Watermarks
-### 3.1 SourceFunction 直接定义 Timestamp 与 Watermarks
+### 3.1 SourceFunction 直接定义
 ```java
 class GameSourceFunction[T <: GameModel](seq: Seq[T], millis: Long = 0) extends SourceFunction[T] {
 
@@ -110,7 +112,7 @@ class GameSourceFunction[T <: GameModel](seq: Seq[T], millis: Long = 0) extends 
   }
 }
 ```
-### 3.2 通过Flink提供的 Timestamp Assigner 指定 Timestamp 与 Watermarks
+### 3.2 通过Flink的 Timestamp Assigner 指定
 
 Flink 提供了两个接口用于指定 Timestamp 与 Watermarks
 - `AssignerWithPeriodicWatermarks`  按时间间隔周期性生成 Watermarks 
