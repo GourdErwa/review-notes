@@ -1,5 +1,6 @@
-# README
+[![Build Status](https://travis-ci.com/GourdErwa/review-notes.svg?branch=master)](https://travis-ci.com/GourdErwa/review-notes)
 
+# README
 > 该文档使用 [vuepress](https://vuepress.vuejs.org/) 发布，[在线阅读地址](https://gourderwa.github.io/review-notes/#/)，执行 `npm run docs:dev` 本地阅读调试。
 
 # 快速开始
