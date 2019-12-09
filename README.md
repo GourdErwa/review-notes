@@ -1,6 +1,6 @@
 
 [![Build Status](https://travis-ci.org/GourdErwa/review-notes.svg?branch=master)](https://travis-ci.org/GourdErwa/review-notes)
-> 该文档使用 [vuepress](https://vuepress.vuejs.org/) 发布，[在线阅读地址](https://gourderwa.github.io/review-notes/#/)，执行 `npm run docs:dev` 本地阅读调试。
+> 该文档使用 [vuepress](https://vuepress.vuejs.org/) 发布，[在线阅读地址](http://review-notes.top/)，执行 `npm run docs:dev` 本地阅读调试。
 
 ## 快速开始
 - 图床：阿里OSS服务

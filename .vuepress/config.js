@@ -4,7 +4,7 @@ const mySidebar = require("./my-sidebar");
 module.exports = {
     title: '复盘笔记（review-notes）',
     description: 'review notes',
-    base: '/review-notes/',
+    // base: '/review-notes/',
     markdown: {
         lineNumbers: false, // 代码块显示行号
         toc: {includeLevel: [2, 3, 4]}
