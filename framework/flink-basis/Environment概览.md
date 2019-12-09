@@ -1,5 +1,5 @@
->该专栏内容与 [flink-basis](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) 同步，源码与 [flink-advanced](https://github.com/GourdErwa/flink-advanced) 同步。
-# Environment 概览
+>专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
+## 1 Environment 概览
 该文档主要说明 Flink 作业执行时环境概念，根据不同作业情况选择不同的 `Environment`。  
 大多数API提供了静态方法创建对应 `Environment`，示例如下：
 ```scala
@@ -10,7 +10,7 @@ val sEnv: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEn
 val stEnv: StreamTableEnvironment = StreamTableEnvironment.create(sEnv)
 ```
 
-## 批处理（batch）-ExecutionEnvironment
+## 2 批处理（batch）
 
 ![ExecutionEnvironment_uml](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/ExecutionEnvironment_uml.png)
 
@@ -22,7 +22,7 @@ val stEnv: StreamTableEnvironment = StreamTableEnvironment.create(sEnv)
 - `ContextEnvironment` 用于在客户端上远程执行.
     - `DetachedEnvironment` 用于在客户端上以分离模式进行远程执行
     
-## 流处理（streaming）-StreamExecutionEnvironment
+## 3 流处理（streaming）
 
 ![StreamExecutionEnvironment_uml](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/StreamExecutionEnvironment_uml.png)
 
@@ -31,7 +31,7 @@ val stEnv: StreamTableEnvironment = StreamTableEnvironment.create(sEnv)
 - `StreamContextEnvironment` 
 - `StreamPlanEnvironment` 
 
-## Table 模式处理-TableEnvironment
+## 4 Table 模式处理
 `TableEnvironment` 是创建 Table&SQL 的接口类，用于处理有界与无界数据。  
 主要职责：  
 - 连接外部系统数据源

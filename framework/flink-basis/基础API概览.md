@@ -1,18 +1,18 @@
    
->该专栏内容与 [flink-basis](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) 同步，源码与 [flink-advanced](https://github.com/GourdErwa/flink-advanced) 同步。
+>专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
 本节内容对应[官方文档](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/api_concepts.html)  
 
-# 数据集和数据流
+## 数据集和数据流
 Flink具有特殊的类`DataSet`，`DataStream`用于表示程序中的数据。您可以将它们视为包含重复项的不可变数据集合。  
 `DataSet`处理有限的数据集，用于批处理，对于`DataStream`数据流是无限的，用于流处理。
 
 这些集合在某些关键方面与常规Java集合不同。首先，它们是不可变的，这意味着一旦创建它们就不能添加或删除元素。
 
-# 懒惰执行
+## 懒惰执行
 所有Flink程序都是延迟执行的：执行程序的main方法时，不会直接进行数据加载和转换。而是，将创建每个操作并将其添加到程序的计划中。  
 当通过 `execute()` 执行环境上的调用触发执行时才会执行这些操作。
 
-# 指定键
+## 指定键
 某些转换（join，coGroup，keyBy，groupBy）要求在元素集合上定义键。
 
 其他转换（Reduce，GroupReduce，Aggregate，Windows）允许在应用键之前将数据分组。
@@ -30,7 +30,7 @@ DataStream<...> windowed = input
   .keyBy(/*define key here*/)
   .window(/*window specification*/);
 ```  
-## 定义元组的键
+### 定义元组的键
 ```scala
 val input: DataStream[(Int, String, Long)] = // [...]
 val keyed = input.keyBy(0) // 元组分组在第一字段
@@ -40,7 +40,7 @@ val grouped = input.groupBy(0,1) // 元组分组在由第一字段和第二字�
 DataStream<Tuple3<Tuple2<Integer, Float>,String,Long>> ds;
 ds.keyBy(0) // 系统将完整字符Tuple2用作键（以Integer和Float作为键）
 ```
-## 使用字段表达式定义键
+### 使用字段表达式定义键
 您可以使用基于字符串的字段表达式来引用嵌套字段，并定义用于分组，排序，联接或联合分组的键。
 
 字段表达式使选择（嵌套）复合类型（例如Tuple和POJO类型）中的字段变得非常容易。
@@ -83,7 +83,7 @@ class ComplexNestedClass(
 - "complex.word._3"：WC类中的的 ComplexNestedClass#word 最后一个字段 Tuple3。
 - "complex.hadoopCitizen"：WC类中的 ComplexNestedClass#hadoopCitizen字段。
 
-## 使用按键选择器功能定义按键
+### 使用按键选择器功能定义按键
 使用 `KeySelector` 函数选择自定义实现的键
 ```scala
 // some ordinary case class
@@ -92,8 +92,8 @@ val words: DataStream[WC] = // [...]
 val keyed = words.keyBy( _.word )
 ```
 
-# 转换函数
-## Lambda Functions
+## 转换函数
+### Lambda Functions
 ```scala
 val data: DataSet[String] = // [...]
 data.filter { _.startsWith("http://") }
@@ -102,7 +102,7 @@ data.reduce { (i1,i2) => i1 + i2 }
 // or
 data.reduce { _ + _ }
 ```
-## Rich functions
+### Rich functions
 `RichFunction`提供了函数的生命周期，`open(Configuration parameters)`，`close`，`getRuntimeContext`，`setRuntimeContext`，`getIterationRuntimeContext`
 用于自定义一些资源相关操作。  
 
@@ -123,7 +123,7 @@ data.map (new RichMapFunction[String, Int] {
 })
 ```
 
-# 支持的数据类型
+## 支持的数据类型
 - **Java Tuples and Scala Case Classes**（java元组及scala CaseClass）
 - **Java POJOs**（java POJO类）
 - **Primitive Types**（所有Java和Scala基本类型，例如Integer，String和Double。）
@@ -132,7 +132,7 @@ data.map (new RichMapFunction[String, Int] {
 - **Hadoop Writables**（实现org.apache.hadoop.Writable接口的类型）
 - **Special Types**（Scala的Either，Option和Try。Java API具有自己的自定义实现Either。与Scala的类似Either）
 
-# 累加器和计数器
+## 累加器和计数器
 累加器是具有加法运算和最终累加结果的简单结构，可在作业结束后使用。
 
 最简单的累加器是一个计数器：您可以使用Accumulator.add(V value)方法将其递增 。在工作结束时，Flink将汇总（合并）所有部分结果并将结果发送给客户端。

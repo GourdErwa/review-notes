@@ -1,8 +1,8 @@
-   
->该专栏内容与 [flink-basis](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) 同步，源码与 [flink-advanced](https://github.com/GourdErwa/flink-advanced) 同步。
+>专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
 本节内容对应[官方文档](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/stream/operators/windows.html)，本节内容对应[示例源码](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/streaming/operators/windows/)  
-   
-# 1 Windows（窗口）
+
+[[toc]]   
+## 1 Windows（窗口）
 Windows是处理无限流的核心。Windows将流分成有限大小的**buckets**，我们可以在其上应用计算。
 &emsp;    
 Flink 支持两种"功能性"窗口"
@@ -50,7 +50,7 @@ stream
 
   sEnv.execute(this.getClass.getName)
 ```
-## 1.1 Keyed Windows（按key分隔的窗口）
+### 1.1 Keyed Windows
 `keyBy(...).window(...) call for the keyed streams `  
 >拥有`keyed streams`将使窗口化计算可以由多个任务**并行执行**，因为每个逻辑`keyed streams`都可以独立于其余逻辑流进行处理。引用同一键的所有元素将被发送到同一并行任务。
 ```
@@ -64,7 +64,7 @@ stream
        .reduce/aggregate/fold/apply()      <-  required: "function"
       [.getSideOutput(...)]      <-  optional: "output tag"
 ```  
-## 1.2 Non-Keyed Windows（未按key分隔的窗口）
+### 1.2 Non-Keyed Windows
 `windowAll(...) for non-keyed streams`  
 >原始流将不会拆分为多个逻辑流，并且所有窗口逻辑将由单个任务执行，即并行度为1
 ```  
@@ -78,7 +78,7 @@ stream
       [.getSideOutput(...)]      <-  optional: "output tag"
 ```      
 >在上面，方括号（`[…]`）中的命令是可选的。Flink允许您以多种不同方式自定义窗口逻辑，满足各种需求
-# 2 窗口生命周期
+## 2 窗口生命周期
 只要属于此窗口的第一个元素到达，就会创建一个窗口，当时间（事件或处理时间）超过其结束时间戳加上用户指定的允许延迟时，窗口将被完全删除。  
 &emsp;    
 Flink 保证仅删除基于时间的窗口而不是其他类型的窗口，例如全局窗口。  
@@ -87,7 +87,7 @@ Flink 保证仅删除基于时间的窗口而不是其他类型的窗口，例�
 此外，每个窗口都有一个Trigger和函数（Process`window function`，ReduceFunction，AggregateFunction或FoldFunction）。该函数将包含要应用于窗口内容的计算，而触发器指定窗口被认为准备好应用该函数的条件。触发策略可能类似于“当窗口中的元素数量大于4”时，或“当水位线通过窗口结束时”。触发器还可以决定在创建和删除之间的任何时间清除窗口的内容。在这种情况下，清除仅涉及窗口中的元素，而不是窗口元数据。这意味着仍然可以将新数据添加到该窗口。
 &emsp;    
 除上述内容外，还可以指定一个`Evictor`（参见Evictors），它可以在触发器触发后以及应用函数之前和/或之后从窗口中删除元素。
-# 3 窗口类型
+## 3 窗口类型
 Flink 提供以下类型窗口：
 - Tumbling Windows：滚动窗口（没有重叠） 
 - Sliding Windows：滑动窗口 （可能会重叠）
@@ -103,7 +103,7 @@ Flink 提供以下类型窗口：
 
 ![WindowAssigner_uml](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/WindowAssigner_uml.png)
 
-## 3.1 滚动窗户(Tumbling Windows)
+### 3.1 滚动窗户(Tumbling Windows)
 **定义**：滚动窗口具有固定的大小，并且不重叠。
 例如，指定大小为 5 分钟的滚动窗口，每 5 分钟将启动一个新窗口
 &emsp;   
@@ -144,7 +144,7 @@ Flink 提供以下类型窗口：
  */
   keyed.timeWindow(Time.seconds(5))
 ```
-## 3.2 滑动窗(Sliding Windows)
+### 3.2 滑动窗(Sliding Windows)
 **定义**：滑动窗口按时间分配固定的大小，且按指定时间参数启动新的窗口，可能会重叠。  
 例如，如果您指定大小为5分钟，滑动参数为1分钟，则每1分钟将启动一个新窗口，累计5分钟进入窗口的事件后该窗口结束。
 &emsp;   
@@ -184,7 +184,7 @@ Flink 提供以下类型窗口：
   */
   keyed.timeWindow(Time.seconds(10), Time.seconds(5))
 ```
-## 3.3 会话窗口(Session Windows)
+### 3.3 会话窗口(Session Windows)
 **定义**：与滑动窗口和滚动窗口相比，会话窗口不重叠且没有固定的开始和结束时间。相反，当会话窗口在一定时间段内未收到元素时（即，发生不活动间隙时），它将关闭。  
 会话窗口分配器支持静态与动态时间间隔创建，其限定不活动周期有多长。当此时间段到期时，当前会话将关闭，随后的元素将分配给新的会话窗口
 >动态间隙是通过实现[[org.apache.flink.streaming.api.windowing.assigners.SessionWindowTimeGapExtractor]]接口指定  
@@ -222,7 +222,7 @@ Flink 提供以下类型窗口：
     element.dataUnix
   }))
 ```
-## 3.4 全局窗口(Global Windows)
+### 3.4 全局窗口(Global Windows)
 **定义**：全局窗口分配器将所有具有相同key的元素分配到同一个全局窗口中，这个窗口模式仅适用于用户还需自定义触发器的情况。  
 否则，由于全局窗口没有一个自然的结尾，无法执行元素的聚合，将不会有计算被执行。
 
@@ -250,7 +250,7 @@ Flink 提供以下类型窗口：
   keyed.countWindow(5, 10)
 ```
 
-# 4 触发器(Trigger)
+## 4 触发器(Trigger)
 触发器决定了一个窗口何时可以被`window function`处理，每一个窗口分配器都有一个默认的触发器，如果默认的触发器不能满足需要，你可以通过调用`WindowedStream.trigger(...)`来指定一个自定义的触发器。
 
 >例如：`TumblingEventTimeWindows`（滚动窗口）默认触发器为`EventTimeTrigger`，默认情况下在*当前窗口支持最大时间小于等于当前水印线时*触发`window function`。
@@ -272,7 +272,7 @@ Flink 提供以下类型窗口：
     - FIRE_AND_PURGE：触发计算并清除窗口中的数据
 2. 这些函数可以注册 "处理时间定时器" 或者 "事件时间计时器"，被用来为后续的操作使用
 
-## 4.1 触发器结果
+### 4.1 触发器结果
 触发方法的结果类型。这决定了窗口会发生什么，`TriggerResult` 返回状态包含
 - CONTINUE 在窗口上不执行任何操作
 - FIRE 触发计算
@@ -285,13 +285,13 @@ Flink 提供以下类型窗口：
 默认情况下，内置的触发器只返回FIRE，不会清除窗口状态
 >注意：清除将仅删除窗口的内容，并将保留有关该窗口的任何潜在元信息和任何触发状态。
 
-## 4.2 WindowAssigners的默认触发器
+### 4.2 WindowAssigners的默认触发器
 默认触发器参考 `WindowAssigner#getDefaultTrigger(StreamExecutionEnvironment env)` 子类实现  
 **注意**：GlobalWindow的默认NeverTrigger永不触发的。因此，必须定义一个自定义触发器  
 &emsp;   
 **注意**：调用`trigger()`指定触发器后，将覆盖的默认触发器。
 
-## 4.3 Flink内置和自定义触发器
+### 4.3 Flink内置和自定义触发器
 [Trigger](https://github.com/apache/flink/blob/master//flink-streaming-java/src/main/java/org/apache/flink/streaming/api/windowing/triggers/Trigger.java)内置实现类图
 ![Trigger_uml](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/Trigger_uml.png)
 &emsp;   
@@ -308,7 +308,7 @@ Flink带有一些内置触发器如下：
 
 
 自定义触发器实现`Trigger`接口即可。
-# 5 驱逐器(Evictor)
+## 5 驱逐器(Evictor)
 驱逐器能够在触发器触发之后，在应用`window function`之前或之后从窗口中移除元素，也可以之前之后都删除元素。调用`.evictor(CountEvictor.of(10))`进行设置
 &emsp;   
 
@@ -328,7 +328,7 @@ Flink带有一些内置触发器如下：
 2. 如果指定了 Evictor(evictBefore)则会妨碍任何pre-aggregation操作，因为所有的窗口元素都会在windowing function计算之前先执行evictor操作
 3. Flink不保证窗口内元素的顺序，Evictor 可以从窗口的开头删除元素，但不一定是最先到达的元素
 
-# 6 允许延迟(Allowed Lateness)
+## 6 允许延迟(Allowed Lateness)
 默认情况下，当 watermark 通过之后，再有之前的数据到达时，这些数据会被删除。为了避免有些迟到的数据被删除，因此产生了 allowedLateness 的概念。  
 *allowedLateness 针对**event-time**而言，对于其他时间类型无意义。*
 > `WindowOperator#processElement`窗口操作中`allowedLateness`参与运算相关源码分析:

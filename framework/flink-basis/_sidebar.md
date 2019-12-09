@@ -11,15 +11,15 @@
 
 * Flink DataSet（Batch）    
     * [DataSet概览](/framework/flink-basis/DataSet概览.md)
-    * [DataSet分配唯一标识符(ZippingElements)](/framework/flink-basis/DataSet分配唯一标识符(ZippingElements).md)
-    * [DataSet参数传递(PassingParametersFunctions)](/framework/flink-basis/DataSet参数传递(PassingParametersFunctions).md)
-    * [DataSet广播变量(BroadcastVariables)](/framework/flink-basis/DataSet广播变量(BroadcastVariables).md)
-    * [DataSet分布式缓冲(DistributedCache)](/framework/flink-basis/DataSet分布式缓冲(DistributedCache).md)
-    * [DataSet语义注解(SemanticAnnotations)](/framework/flink-basis/DataSet语义注解(SemanticAnnotations).md)
+    * [DataSet分配唯一标识符](/framework/flink-basis/DataSet分配唯一标识符.md)
+    * [DataSet参数传递](/framework/flink-basis/DataSet参数传递.md)
+    * [DataSet广播变量](/framework/flink-basis/DataSet广播变量.md)
+    * [DataSet分布式缓冲](/framework/flink-basis/DataSet分布式缓冲.md)
+    * [DataSet语义注解](/framework/flink-basis/DataSet语义注解.md)
     
 * Flink DataStream（Streaming）   
     * [DataStream概览](/framework/flink-basis/DataStream概览.md)
-    * [DataStream时间水印机制(Time&Watermark)](/framework/flink-basis/DataStream时间水印机制(Time&Watermark).md)
-    * [DataStream-ProcessFunction(低阶函数)](/framework/flink-basis/DataStream-ProcessFunction(低阶函数).md)
-    * [DataStream窗口机制(Window)](/framework/flink-basis/DataStream窗口机制(Window).md)
-    * [DataStream窗口功能函数(WindowFunction)](/framework/flink-basis/DataStream窗口功能函数(WindowFunction).md)
+    * [DataStream时间水印机制](/framework/flink-basis/DataStream时间水印机制.md)
+    * [DataStream-ProcessFunction](/framework/flink-basis/DataStream-ProcessFunction.md)
+    * [DataStream窗口机制](/framework/flink-basis/DataStream窗口机制.md)
+    * [DataStream窗口功能函数](/framework/flink-basis/DataStream窗口功能函数.md)
