@@ -4,6 +4,10 @@ const mySidebar = require("./my-sidebar");
 module.exports = {
     title: '复盘笔记（review-notes）',
     description: 'review notes',
+    extraWatchFiles: [ // 被监听的文件，文件变动将会触发 vuepress 重新构建，并实时更新
+        './my-nav.js', // 使用相对路径
+        './my-sidebar'   // 使用绝对路径
+    ],
     // base: '/review-notes/',
     markdown: {
         lineNumbers: false, // 代码块显示行号
