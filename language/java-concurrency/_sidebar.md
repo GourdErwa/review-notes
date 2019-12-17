@@ -10,7 +10,7 @@
 - 并发关键字与关键类
     - [final域的内存语义](/language/java-concurrency/内存模型-final域的内存语义.md)
     - CAS实现原理
-    - [volatile](/language/java-concurrency/内存模型-volatile.md)
+    - [volatile](/language/java-concurrency/并发关键字-volatile.md)
     - synchronized
     - 原子类
     

@@ -14,10 +14,16 @@ module.exports = [
             {text: 'Flink 入门进阶', link: '/framework/flink-basis/'}
         ]
     },
+    // {
+    //     text: '算法',
+    //     items: [
+    //         {text: '数据结构', link: '/algorithm/data-structures/'}
+    //     ]
+    // },
     {
-        text: '算法',
+        text: '关于',
         items: [
-            {text: '数据结构', link: '/algorithm/data-structures/'}
+            {text: '关于学习方法', link: '/about/关于学习方法.md'}
         ]
     }
 ]
