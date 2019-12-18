@@ -1,7 +1,7 @@
->专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
+> 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[github-源码 ](https://github.com/GourdErwa/flink-advanced)，欢迎 Star，转载请附上原文出处链接和本声明。
 ## 1 Environment 概览
 该文档主要说明 Flink 作业执行时环境概念，根据不同作业情况选择不同的 `Environment`。  
-大多数API提供了静态方法创建对应 `Environment`，示例如下：
+大多数 API 提供了静态方法创建对应 `Environment`，示例如下：
 ```scala
 val bEnv: ExecutionEnvironment = ExecutionEnvironment.getExecutionEnvironment
 val btEnv: BatchTableEnvironment = BatchTableEnvironment.create(bEnv)
@@ -35,7 +35,7 @@ val stEnv: StreamTableEnvironment = StreamTableEnvironment.create(sEnv)
 `TableEnvironment` 是创建 Table&SQL 的接口类，用于处理有界与无界数据。  
 主要职责：  
 - 连接外部系统数据源
-- 注册和检索 Table 及从 catalog获取其他元对象信息
+- 注册和检索 Table 及从 catalog 获取其他元对象信息
 - 执行 SQL 语句
 - 提供配置信息
 - ![TableEnvironment_uml](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/TableEnvironment_uml.png)

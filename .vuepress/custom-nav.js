@@ -11,7 +11,7 @@ module.exports = [
     {
         text: '技术框架',
         items: [
-            {text: 'Flink 入门进阶', link: '/framework/flink-basis/'}
+            {text: 'Flink 基础', link: '/framework/flink-basis/'}
         ]
     },
     // {
@@ -23,7 +23,7 @@ module.exports = [
     {
         text: '关于',
         items: [
-            {text: '关于学习方法', link: '/about/关于学习方法.md'}
+            {text: '学习方法', link: '/about/学习方法.md'}
         ]
     }
 ]

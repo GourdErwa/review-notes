@@ -1,10 +1,10 @@
->专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
-本节内容对应[官方文档](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/stream/operators/windows.html#window-functions)，本节内容对应[示例源码](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/streaming/operators/windows/functions)  
+> 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[github-源码 ](https://github.com/GourdErwa/flink-advanced)，欢迎 Star，转载请附上原文出处链接和本声明。
+本节内容对应[官方文档 ](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/stream/operators/windows.html#window-functions)，本节内容对应[示例源码 ](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/streaming/operators/windows/functions)  
 
 [[toc]]   
 ## 1 窗口函数概念
-窗口函数为每个窗口上执行计算。一旦确定某个窗口已准备好进行处理，就可以使用该窗口函数来处理每个（可能是Keyed Windows）窗口的元素
->窗口机制（请参考：5.3-Flink DataStream窗口机制(Window)）
+窗口函数为每个窗口上执行计算。一旦确定某个窗口已准备好进行处理，就可以使用该窗口函数来处理每个（可能是 Keyed Windows）窗口的元素
+> 窗口机制（```scala：Flink DataStream 窗口机制）
 
 分析`WindowedStream`源码提供方法：
 ![WindowedStream_methods](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/WindowedStream_methods.png)
@@ -15,10 +15,10 @@
 - ReduceFunction
 - AggregateFunction
 - FoldFunction
-分别对应函数为.reduce/aggregate/fold/apply()中需要做的操作。
->废弃说明：fold、apply已废弃推荐使用 aggregate 函数，废弃的函数不进行文档说明
-### 1.1 WindowFunction与ProcessWindowFunction区别
-分析提供方法，对于各类型函数提供了 WindowFunction与ProcessWindowFunction 方法，使用reduce相关函数分析关联关系如下：
+分别对应函数为.reduce/aggregate/fold/apply() 中需要做的操作。
+> 废弃说明：fold、apply 已废弃推荐使用 aggregate 函数，废弃的函数不进行文档说明
+### 1.1 WindowFunction 与 ProcessWindowFunction 区别
+分析提供方法，对于各类型函数提供了 WindowFunction 与 ProcessWindowFunction 方法，使用 reduce 相关函数分析关联关系如下：
 ![WindowFunction_comparison](https://blog-review-notes.oss-cn-beijing.aliyuncs.com/framework/flink-basis/_images/WindowFunction_comparison.png)
 
 **WindowFunction 处理方法:**
@@ -26,21 +26,21 @@
 **ProcessWindowFunction 处理方法:**
 `void process(KEY key, Context context, Iterable<IN> elements, Collector<OUT> out)`
 
-**区别点主要为**：WindowFunction可以访问当前窗口，ProcessWindowFunction可以访问当前Context
+**区别点主要为**：WindowFunction 可以访问当前窗口，ProcessWindowFunction 可以访问当前 Context
 
 ### 1.2 ProcessWindowFunction
-该函数获取一个Iterable，该Iterable包含窗口的所有元素，以及一个Context 对象，该对象可以访问时间和状态信息，从而使其比其他窗口函数更具灵活性
+该函数获取一个 Iterable，该 Iterable 包含窗口的所有元素，以及一个 Context 对象，该对象可以访问时间和状态信息，从而使其比其他窗口函数更具灵活性
 这是以性能和资源消耗为代价的，因为无法增量聚合元素，而是需要在内部对其进行缓冲，直到将窗口数据全部准备好进行处理为止。
 &emsp;    
 
 **使用每个窗口状态**  
-调用在Context对象上process()有两种方法可以访问两种状态：
+调用在 Context 对象上 process() 有两种方法可以访问两种状态：
 - globalState()，它允许访问不在窗口范围内的键状态
 - windowState()，它允许访问也作用于窗口的键控状态
 
 如果您预期同一窗口会多次触发，则此功能很有用，例如，对于迟到的数据有较早的触发，或者您有进行推测性较早触发的自定义触发器时。在这种情况下，您将存储有关先前触发或每个窗口状态中触发次数的信息。
 
-使用窗口状态时，清除窗口时也要在clear()方法中清除该状态
+使用窗口状态时，清除窗口时也要在 clear() 方法中清除该状态
 &emsp;    
 
 **注意**  
@@ -49,12 +49,12 @@
 &emsp;    
 
 **性能说明**  
-`ProcessWindowFunction` 用于简单的聚合（如count）效率很低。
+`ProcessWindowFunction` 用于简单的聚合（如 count）效率很低。
 ***具有增量聚合的窗口函数*** 部分说明如何将 `ReduceFunction` 或 `AggregateFunction` 与或结合使用，
 以`ProcessWindowFunction`同时获得增量聚合和的附加信息`ProcessWindowFunction`。
 
 示例代码：
-```java
+```scala
 object ApplyProcessWindowFunction extends WindowedStreamFunctions {
 
   window
@@ -85,7 +85,7 @@ object ApplyProcessWindowFunction extends WindowedStreamFunctions {
 &emsp;    
 
 示例代码：
-```java
+```scala
 object ApplyWindowFunction extends WindowedStreamFunctions {
 
   window
@@ -114,7 +114,7 @@ object ApplyWindowFunction extends WindowedStreamFunctions {
 
 ### 1.4 reduce
 将输入中的两个元素组合在一起以产生相同类型的输出元素
-```java
+```scala
 object ApplyReduce extends WindowedStreamFunctions {
 
   window
@@ -129,18 +129,18 @@ Flink 的`AggregateFunction`是一个基于中间计算结果状态进行增量�
 由于是迭代计算方式，所以，在窗口处理过程中，不用缓存整个窗口的数据，所以效率执行比较高。
 &emsp;    
 
-**AggregateFunction泛型说明**
+**AggregateFunction 泛型说明**
 输入类型（IN），迭代数据类型（ACC），和一个输出类型（OUT）
 &emsp;    
 
-**AggregateFunction方法说明**
+**AggregateFunction 方法说明**
 - ACC createAccumulator(); 迭代状态的初始值
 - ACC add(IN value, ACC accumulator); 每一条输入数据，和迭代数据如何迭代
 - ACC merge(ACC a, ACC b); 多个分区的迭代数据如何合并
 - OUT getResult(ACC accumulator); 返回数据，对最终的迭代数据如何处理，并返回结果。
 
 示例代码：
-```java
+```scala
 object ApplyAggregate extends WindowedStreamFunctions {
 
   window
@@ -152,7 +152,7 @@ object ApplyAggregate extends WindowedStreamFunctions {
   /*
   执行解释：
   1.给定迭代初始值 (0, 0)。 元组 第一个记录分数，第二个记录数据条数
-  2.输入的数据，获取分数，累加到迭代值元组的第一个元素中，迭代值元组的第二个值记录条数加1 。
+  2.输入的数据，获取分数，累加到迭代值元组的第一个元素中，迭代值元组的第二个值记录条数加 1 。
   3.每一个分区迭代完毕后，各分区的迭代值合并成最终的迭代值
   4.对最终的迭代处理，获取最终的输出结果。
    */
@@ -178,17 +178,17 @@ object ApplyAggregate extends WindowedStreamFunctions {
 ```
 
 ## 2 具有增量聚合的窗口函数
-增量聚合函数，支持组合(预处理函数+窗口函数)
+增量聚合函数，支持组合 (预处理函数+窗口函数)
 - pre-Function[T] + ProcessWindowFunction[T, R, K, W]
 - pre-Function[T] + WindowFunction[T, R, K, W]
 
-增量聚合函数由于是基于中间状态计算，因此性能较好，但是灵活性却不及ProcessWindowFunction   
+增量聚合函数由于是基于中间状态计算，因此性能较好，但是灵活性却不及 ProcessWindowFunction   
 缺失了对窗口状态数据的操作以及对窗口中元数据信息的获取等。但是使用全量聚合函数去完成一些基础的增量统计运算又相对比较浪费资源，性能低于增量。  
-因此Flink提供了一种方式，可以将Incremental Aggregation Function和ProcessWindowFunction整合起来，
+因此 Flink 提供了一种方式，可以将 Incremental Aggregation Function 和 ProcessWindowFunction 整合起来，
 充分利用这两种计算方式的优势去处理数据。
 
-本示例为：具有ReduceFunction的增量窗口聚合
-``` java
+本示例为：具有 ReduceFunction 的增量窗口聚合
+```scala
 // 本示例调用使用 WindowedStream 类中 reduce 函数如下
 def reduce[R: TypeInformation](
 preAggregator: (T, T) => T,

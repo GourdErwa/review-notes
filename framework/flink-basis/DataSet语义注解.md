@@ -1,13 +1,13 @@
->专栏原创出处：[源笔记文件](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[源码](https://github.com/GourdErwa/flink-advanced)
-本节内容对应[官方文档](https://ci.apache.org/projects/flink/flink-docs-release-1.9/zh/dev/batch/#semantic-annotations)，本节内容对应[示例源码](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/batch/SemanticAnnotations.scala)  
+> 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[github-源码 ](https://github.com/GourdErwa/flink-advanced)，欢迎 Star，转载请附上原文出处链接和本声明。
+本节内容对应[官方文档 ](https://ci.apache.org/projects/flink/flink-docs-release-1.9/zh/dev/batch/#semantic-annotations)，本节内容对应[示例源码 ](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/batch/SemanticAnnotations.scala)  
 
 [[toc]]
 
-语义注解可用于为Flink提供有关函数行为的提示。它们告诉系统函数读取和评估函数输入的哪些字段，以及未修改的函数将哪些字段从其输入转发到输出。  
+语义注解可用于为 Flink 提供有关函数行为的提示。它们告诉系统函数读取和评估函数输入的哪些字段，以及未修改的函数将哪些字段从其输入转发到输出。  
 语义注解是加快执行速度的强大方法，因为它们使系统能够推理出在多个操作之间重用排序顺序或分区。  
 使用语义注解最终可以使程序免于不必要的数据改组或不必要的排序，并显着提高程序的性能。
 
->注意：语义注解的使用是可选的。但是，在提供语义注解时保守是绝对至关重要的！错误的语义注解将导致Flink对您的程序做出错误的假设，并最终可能导致错误的结果。如果操作员的行为无法明确预测，则不应提供注释。请仔细阅读文档。
+> 注意：语义注解的使用是可选的。但是，在提供语义注解时保守是绝对至关重要的！错误的语义注解将导致 Flink 对您的程序做出错误的假设，并最终可能导致错误的结果。如果操作员的行为无法明确预测，则不应提供注释。请仔细阅读文档。
 
 ## 1 转发字段注解
 转发字段信息声明了输入字段，该字段未经修改就被函数转发到输出中的相同位置或另一个位置。  
@@ -17,9 +17,9 @@
 
 **转发规则语法**
 - `SingleInputUdfOperator（withForwardedFields）` 语法：  
-    - `dataUnix->_1`  表示将class中dataUnix转发到scala元组的第一个位置
+    - `dataUnix->_1`  表示将 class 中 dataUnix 转发到 scala 元组的第一个位置
     - `*`             表示全部字段转发
-    - `*->_2`         表示部字段转发到scala元组的第二个位置
+    - `*->_2`         表示部字段转发到 scala 元组的第二个位置
 
 
 - `TwoInputUdfOperator` 语法：
@@ -44,7 +44,7 @@ object ForwardedFields extends BatchExecutionEnvironmentApp {
 
 /**
   * 自定义 map 实现函数，操作累加器示例
-  * (Int, String, String) => (时间，用户ID,用户登录状态)
+  * (Int, String, String) => (时间，用户 ID,用户登录状态)
   */
 class MyForwardedFieldsMap extends MapFunction[UserLogin, (Int, String, String)] {
   override def map(value: UserLogin): (Int, String, String) =
@@ -52,18 +52,20 @@ class MyForwardedFieldsMap extends MapFunction[UserLogin, (Int, String, String)]
 }
 ```
 ### 1.1 函数类注释
-- @ForwardedFields 用于诸如Map和Reduce的单一输入功能。
-- @ForwardedFieldsFirst 具有两个输入（例如Join和CoGroup）的函数的第一个输入。
-- @ForwardedFieldsSecond 具有两个输入（例如Join和CoGroup）的函数的第二个输入。
+- @ForwardedFields 用于诸如 Map 和 Reduce 的单一输入功能。
+- @ForwardedFieldsFirst 具有两个输入（例如 Join 和 CoGroup）的函数的第一个输入。
+- @ForwardedFieldsSecond 具有两个输入（例如 Join 和 CoGroup）的函数的第二个输入。
 
 ### 1.2 函数操作指定
-- data.map(myMapFnc).withForwardedFields() 用于单个输入功能，例如Map和Reduce。
-- data1.join(data2).where().equalTo().with(myJoinFnc).withForwardFieldsFirst() 具有两个输入（例如Join和CoGroup）的函数的第一个输入。
-- data1.join(data2).where().equalTo().with(myJoinFnc).withForwardFieldsSecond() 具有两个输入（例如Join和CoGroup）的函数的第二个输入。
+- data.map(myMapFnc).withForwardedFields() 用于单个输入功能，例如 Map 和 Reduce。
+- data1.join(data2).where().equalTo().with(myJoinFnc).withForwardFieldsFirst() 具有两个输入（例如 Join 和 CoGroup）的函数的第一个输入。
+- data1.join(data2).where().equalTo().with(myJoinFnc).withForwardFieldsSecond() 具有两个输入（例如 Join 和 CoGroup）的函数的第二个输入。
 
 ## 2 非转发字段注解
 声明了非转发字段，未声明的默认为转发字段
->具有相反语义的声明方式与转发字段一致，且仅可通过注解方式声明
+> 具有相反语义的声明方式与转发字段一致，且仅可通过注解方式声明
+
+支持注解：
 * [[org.apache.flink.api.java.functions.FunctionAnnotation.NonForwardedFields]]
 * [[org.apache.flink.api.java.functions.FunctionAnnotation.NonForwardedFieldsFirst]]
 * [[org.apache.flink.api.java.functions.FunctionAnnotation.NonForwardedFieldsSecond]]
@@ -73,8 +75,8 @@ class MyForwardedFieldsMap extends MapFunction[UserLogin, (Int, String, String)]
 
 
 例如，在指定读取字段信息时，必须将在条件语句中评估或用于计算的字段标记为已读。只有未经修改的字段转发到输出，而不评估其值或根本不被访问的字段不被视为被读取。
-```java
-@ReadFields("_1; _4") // _1 and _4 2个字段分别用于函数条件语句判断与结果计算.
+```scala
+@ReadFields("_1; _4") // _1 and _4 2 个字段分别用于函数条件语句判断与结果计算.
 class MyMap extends MapFunction[(Int, Int, Int, Int), (Int, Int)]{
    def map(value: (Int, Int, Int, Int)): (Int, Int) = {
     if (value._1 == 42) {
