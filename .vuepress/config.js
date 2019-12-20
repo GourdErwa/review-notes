@@ -1,5 +1,5 @@
 const myNav = require("./custom-nav.js");
-const mySidebar = require("./sidebar/custom-sidebar");
+const mySidebar = require("./custom-sidebar");
 
 module.exports = {
     title: '复盘笔记（review-notes）',
