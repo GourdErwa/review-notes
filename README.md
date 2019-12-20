@@ -1,17 +1,13 @@
 [![Build Status](https://travis-ci.org/GourdErwa/review-notes.svg?branch=master)](https://travis-ci.org/GourdErwa/review-notes)
 
-## 快速开始
-- 为什么有这个项目？   
-用于团队分享学习、复盘笔记资料共享
-  
-- 在线阅读地址内容地址是？   
-[https://review-notes.top/ ](http://review-notes.top/)  
+该项目用于团队分享学习、复盘笔记资料分享。   
+主要使用费曼学习法进行团队知识分享学习，参考 [学习方法 ](/about/学习方法.md)。  
+为了更好的阅读体验，访问 [在线阅读 ](http://review-notes.top/)。     
+欢迎交流流反馈，提交 [issues]([issues](https://github.com/GourdErwa/review-notes/issues))
 
-- 网上学习资料那么多，为什么还写这些？   
-因为网上是别人写的，我们阅读后知识吸收率太低，这个项目用于自身学习团队分享，主要使用费曼学习法进行，[学习方法 ](/about/学习方法.md)。
-
-- 在线阅读内容怎么发布的？  
-使用 [vuepress](https://vuepress.vuejs.org/) 发布，使用 [Travis CI](https://travis-ci.org/GourdErwa/review-notes-dev) 持续集成 ，交叉审核地址 [http://dev.review-notes.top ](http://dev.review-notes.top/)
+## 构建  
+- 使用 [vuepress](https://vuepress.vuejs.org/) 发布，使用 [Travis CI](https://travis-ci.org/GourdErwa/review-notes-dev) 持续集成 
+- 执行 `npm run docs:dev` 进入本地开发模式， 默认访问 [localhost:8080](http://localhost:8080/ )
 
 ## 笔记内容
 - 编程语言 
@@ -19,11 +15,10 @@
 - 技术框架
     * [Flink 基础 ](/framework/flink-basis/)
     
-## 贡献说明
-[贡献说明](https://github.com/GourdErwa/review-notes-dev)
+## 如何贡献
+欢迎投稿、贡献。参考 [贡献说明](https://github.com/GourdErwa/review-notes-dev)
 
-## 贡献者
-感谢以下人员对本仓库做出的贡献：    
+### 贡献列表
 [liming199323](https://github.com/liming199323) ,
 [VVvista](https://github.com/VVvista) , 
 [yssmars](https://github.com/yssmars) , 
@@ -31,3 +26,6 @@
 [cmshome](https://github.com/cmshome) , 
 [tangzhiwen](https://github.com/tangzhiwen) , 
 [monotcoder](https://github.com/monotcoder)
+
+## License
+MIT License
