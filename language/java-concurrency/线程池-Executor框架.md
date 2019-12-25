@@ -1,5 +1,7 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/language/java-concurrency) ，[github-源码 ](https://github.com/GourdErwa/java-advanced/tree/master/java-concurrency)，欢迎 Star，转载请附上原文出处链接和本声明。
 
+Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程](https://review-notes.top/language/java-concurrency/)
+
 [[toc]]
 ## Executor 框架是什么
 Java 线程的创建与销毁需要一定的开销，因此为每一个任务创建一个新线程来执行，线程的创建与开销将浪费大量计算资源。而且，如果不对创建线程的数量做限制，可能会导致系统负荷太高而崩溃。
@@ -64,9 +66,10 @@ Executors 是一个静态的工厂方法类，提供快速创建线程池等操�
     - unconfigurableExecutorService
     - unconfigurableScheduledExecutorService
 
+> 以下关于各类线程池的创建无特殊说明，创建方法都是指 Executors 中的静态方法
 ## ThreadPoolExecutor 详解
 ### FixedThreadPool
-FixedThreadPool 被称为可重用固定线程数的线程池。
+FixedThreadPool 被称为可重用固定线程数的线程池。Executors 提供的静态创建方法如下：
 ```java
     public static ExecutorService newFixedThreadPool(int nThreads) {
         return new ThreadPoolExecutor(nThreads, nThreads,
@@ -79,7 +82,10 @@ FixedThreadPool 被称为可重用固定线程数的线程池。
 当线程池中的线程数大于 corePoolSize 时，keepAliveTime 为多余的空闲线程等待新任务的最长时间，超过这个时间后多余的线程将被终止。   
 - keepAliveTime 设置为 0L，意味着多余的空闲线程会被立即终止。
 - FixedThreadPool 使用无界队列 LinkedBlockingQueue 作为线程池的工作队列（队列的容量为 Integer.MAX_VALUE）。 
-   
+#### 优缺点
+- 优点是多任务并行运行，最大并行运行线程数量是固定的
+- 优点是能够保证所有的任务都被执行，永远不会拒绝新的任务
+- 缺点是队列数量没有限制，在任务执行时间无限延长的这种极端情况下会造成内存问题
    
 #### 使用无界队列作带来的影响
 1. 当线程池中的线程数达到 corePoolSize 后，新任务将在无界队列中等待，因此线程池中的线程数不会超过 corePoolSize。 
@@ -88,7 +94,7 @@ FixedThreadPool 被称为可重用固定线程数的线程池。
 4. 由于使用无界队列，运行中的 FixedThreadPool（未执行方法 shutdown 或 shutdownNow）不会拒绝任务（不会调用 RejectedExecutionHandler.rejectedExecution 方法）。
 
 ### SingleThreadExecutor
-SingleThreadExecutor 是使用单个线程的线程池。
+SingleThreadExecutor 是使用单个线程的线程池。Executors 提供的静态创建方法如下：
 ```java
     public static ExecutorService newSingleThreadExecutor(ThreadFactory threadFactory) {
         return new FinalizableDelegatedExecutorService
@@ -98,14 +104,19 @@ SingleThreadExecutor 是使用单个线程的线程池。
                                     threadFactory));
     }
 ```
-参数设置及影响说明：
+#### 参数设置及影响说明
 - corePoolSize 和 maximumPoolSize 被设置为 1。其他参数与 FixedThreadPool 相同。
 - 使用无界队列 LinkedBlockingQueue 作为线程池的工作队列（队列的容量为 Integer.MAX_VALUE）。
 
 > SingleThreadExecutor 使用无界队列作为工作队列对线程池带来的影响与 FixedThreadPool 相同。
 
+#### 优缺点
+- 优点是适用于在逻辑上需要单线程处理任务的场景，最大并行运行线程数量固定为1
+- 优点是能够保证所有的任务都被执行，永远不会拒绝新的任务
+- 缺点是队列数量没有限制，在任务执行时间无限延长的这种极端情况下会造成内存问题
+
 ### CachedThreadPool
-CachedThreadPool 是一个会根据需要创建新线程的线程池。
+CachedThreadPool 是一个会根据需要创建新线程的线程池。Executors 提供的静态创建方法如下：
 ```java
     public static ExecutorService newCachedThreadPool() {
         return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
@@ -113,7 +124,7 @@ CachedThreadPool 是一个会根据需要创建新线程的线程池。
                                       new SynchronousQueue<Runnable>());
     }
 ```
-参数设置及影响说明：
+#### 参数设置及影响说明
 - corePoolSize 被设置为 0，即 corePool 为空；
 - maximumPoolSize 被设置为 Integer.MAX_VALUE，即 maximumPool 是无界的。
 - keepAliveTime 设置为 60L，意味着 CachedThreadPool 中的空闲线程等待新任务的最长时间为 60 秒，空闲线程超过 60 秒后将会被 终止。
@@ -122,11 +133,18 @@ CachedThreadPool 是一个会根据需要创建新线程的线程池。
 
 > FixedThreadPool 和 SingleThreadExecutor 使用无界队列 LinkedBlockingQueue 作为线程池的工作队列。   
 > CachedThreadPool 使用没有容量的 SynchronousQueue 作为线程池的工作队列，但 CachedThreadPool 的 maximumPool 是无界的。
-> 这意味着，如果主线程提交任务的速度高于 maximumPool 中线程处理任务的速度时，CachedThreadPool 会不断创建新线程。极端情况下， CachedThreadPool 会因为创建过多线程而耗尽 CPU 和内存资源。
+> 这意味着，如果主线程提交任务的速度高于 maximumPool 中线程处理任务的速度时，CachedThreadPool 会不断创建新线程。极端情况下，CachedThreadPool 会因为创建过多线程而耗尽 CPU 和内存资源。
+
+#### 优缺点
+- 优点是多任务并行运行，最大并行运行线程数量是不固定的，随着新任务到达可持续创建新的线程
+- 优点是能够保证所有的任务都被执行，永远不会拒绝新的任务
+- 缺点是极端情况下，处理速度小于任务提交速度时，会因为创建过多线程而耗尽 CPU 和内存资源
 
 ## ScheduledThreadPoolExecutor 详解
 ScheduledThreadPoolExecutor 继承自 ThreadPoolExecutor。它主要用来在给定的延迟之后运行任务，或者定期执行任务。
 >ScheduledThreadPoolExecutor 的功能与 Timer 类似，但 ScheduledThreadPoolExecutor 功能更强大、更灵活。Timer 对应的是单个后台线程，而 ScheduledThreadPoolExecutor 可以在构造函数中指定多个对应的后台线程数。
+
+Executors 提供的静态创建方法如下：
 ```java
     public ScheduledThreadPoolExecutor(int corePoolSize) {
         super(corePoolSize, Integer.MAX_VALUE, 

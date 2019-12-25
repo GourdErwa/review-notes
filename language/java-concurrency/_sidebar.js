@@ -1,6 +1,6 @@
 module.exports = [
     {
-        title: "并发编程-基础篇",
+        title: "并发编程-基础",
         collapsable: false,
         sidebarDepth: 1,
         children: [
@@ -12,52 +12,37 @@ module.exports = [
             ['并发关键字-volatile', '并发关键字-volatile'],
             ['并发关键字-synchronized', '并发关键字-synchronized'],
             ['锁的内存语义', '锁的内存语义'],
-            ['并发同步、锁定机制比较', '并发同步、锁定机制比较'],
-            ['锁-死锁问题及解决方案', '死锁问题及解决方案'],
-            ['锁类型总结', '锁类型总结'],
-            ['原子操作类（atomic包）','原子操作类（atomic包）']
+            ['并发操作比较（CAS、volatile、synchronized、Lock）', '并发操作比较（CAS、volatile、synchronized、Lock）'],
+            ['原子操作类（atomic包）', '原子操作类（atomic包）']
         ]
     },
     {
-        title: "并发编程-线程篇",
+        title: "并发编程-锁",
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+            ['锁-Lock接口简介', '锁-Lock接口简介'],
+            ['锁-AbstractQueuedSynchronizer介绍', '锁-AbstractQueuedSynchronizer介绍'],
+            ['锁-AbstractQueuedSynchronizer原理', '锁-AbstractQueuedSynchronizer原理'],
+            ['锁-重入锁（ReentrantLock）', '锁-重入锁（ReentrantLock）'],
+            ['锁-读写锁（ReentrantReadWriteLock）', '锁-读写锁（ReentrantReadWriteLock）'],
+            ['锁相关工具类（LockSupport）', '锁相关工具类（LockSupport）'],
+            ['锁等待通知机制（Condition）', '锁等待通知机制（Condition）'],
+            ['锁-死锁问题及解决方案', '锁-死锁问题及解决方案'],
+            ['锁类型总结', '锁类型总结']
+        ]
+    },
+    {
+        title: "并发编程-线程",
         collapsable: false,
         sidebarDepth: 1,
         children: [
             ['线程简介', '线程简介'],
-            ['线程等待通知机制', '线程等待通知机制'],
+            ['线程等待通知机制（wait、notify）', '线程等待通知机制（wait、notify）'],
+            ['线程等待操作比较（sleep、wait、park、Condition）', '线程等待操作比较（sleep、wait、park、Condition）'],
             ['线程关键类-ThreadLocal', '线程关键类-ThreadLocal'],
             ['线程池简介', '线程池简介'],
-            ['线程池-Executor框架', '线程池-Executor框架']
+            ['线程池-Executor框架', '线程池-Executor框架'],
         ]
     }
-    // {
-    //     title: "并发编程-线程",
-    //     collapsable: true,
-    //     sidebarDepth: 1,
-    //     children: [
-    //         ['并发关键类-atomic原子类', 'atomic原子类'],
-    //         ['并发关键类-AbstractQueuedSynchronizer', 'AbstractQueuedSynchronizer'],
-    //         ['并发关键类-ReentrantLock', 'ReentrantLock'],
-    //         ['并发关键类-ReentrantReadWriteLock', 'ReentrantReadWriteLock'],
-    //         ['并发关键类-StampedLock', 'StampedLock'],
-    //         ['并发关键类-Condition', 'Condition'],
-    //         ['并发关键类-CountDownLatch', 'CountDownLatch'],
-    //         ['并发关键类-CyclicBarrier', 'CyclicBarrier']
-    //     ]
-    // },
-    // {
-    //     title: "并发编程-关键类分析",
-    //     collapsable: true,
-    //     sidebarDepth: 1,
-    //     children: [
-    //         ['并发关键类-atomic原子类', 'atomic原子类'],
-    //         ['并发关键类-AbstractQueuedSynchronizer', 'AbstractQueuedSynchronizer'],
-    //         ['并发关键类-ReentrantLock', 'ReentrantLock'],
-    //         ['并发关键类-ReentrantReadWriteLock', 'ReentrantReadWriteLock'],
-    //         ['并发关键类-StampedLock', 'StampedLock'],
-    //         ['并发关键类-Condition', 'Condition'],
-    //         ['并发关键类-CountDownLatch', 'CountDownLatch'],
-    //         ['并发关键类-CyclicBarrier', 'CyclicBarrier']
-    //     ]
-    // }
 ];

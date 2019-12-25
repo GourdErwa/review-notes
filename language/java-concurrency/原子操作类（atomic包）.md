@@ -1,5 +1,7 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/language/java-concurrency) ，[github-源码 ](https://github.com/GourdErwa/java-advanced/tree/master/java-concurrency)，欢迎 Star，转载请附上原文出处链接和本声明。
 
+Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程](https://review-notes.top/language/java-concurrency/)
+
 [[toc]]
 ## 原子操作类说明
 当程序更新一个变量时，如果是多线程同时更新这个变量，可能得到的结果与期望值不同。我们可以用 `并发关键字-volatile`、`并发关键字-synchronized`、`Lock` 来解决并发读写问题。

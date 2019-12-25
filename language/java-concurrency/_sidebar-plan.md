@@ -1,16 +1,14 @@
 
 
-- [导言](/language/java-concurrency/README.md)
-
 - 内存模型
-    - [基础概念](/language/java-concurrency/内存模型-基础概念.md)
-    - [顺序一致性](/language/java-concurrency/内存模型-顺序一致性.md)
+    - 基础概念
+    - 顺序一致性
     - 内存模型综述
     
 - 并发关键字与关键类
-    - [final域的内存语义](/language/java-concurrency/内存模型-final域的内存语义.md)
+    - final域的内存语义
     - CAS实现原理
-    - [volatile](/language/java-concurrency/并发关键字-volatile.md)
+    - volatile
     - synchronized
     - 原子类
     
