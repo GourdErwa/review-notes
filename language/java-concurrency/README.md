@@ -1,7 +1,7 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/language/java-concurrency) ，[github-源码 ](https://github.com/GourdErwa/java-advanced/tree/master/java-concurrency)，欢迎 Star，转载请附上原文出处链接和本声明。
 
 ## 说明
-- 无特殊说明，内容基于 JDK 13 整理
+- 无特殊说明，内容基于 JDK 1.8 整理
 - 主要基于《Java并发编程的艺术》一书整理，在书籍基础上重新梳理了知识点，增加了个人理解
 
 ## 专栏同步地址
