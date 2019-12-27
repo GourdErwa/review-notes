@@ -1,6 +1,6 @@
 module.exports = [
     {
-        title: "并发编程-基础",
+        title: "Java 并发编程-基础",
         collapsable: false,
         sidebarDepth: 1,
         children: [
@@ -17,7 +17,20 @@ module.exports = [
         ]
     },
     {
-        title: "并发编程-锁",
+        title: "Java 并发编程-线程",
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+            ['线程简介', '线程简介'],
+            ['线程等待通知机制（wait、notify）', '线程等待通知机制（wait、notify）'],
+            ['线程等待操作比较（sleep、wait、park、Condition）', '线程等待操作比较（sleep、wait、park、Condition）'],
+            ['线程关键类-ThreadLocal', '线程关键类-ThreadLocal'],
+            ['线程池简介', '线程池简介'],
+            ['线程池-Executor框架', '线程池-Executor框架'],
+        ]
+    },
+    {
+        title: "Java 并发编程-锁",
         collapsable: false,
         sidebarDepth: 1,
         children: [
@@ -33,16 +46,16 @@ module.exports = [
         ]
     },
     {
-        title: "并发编程-线程",
+        title: "Java 并发编程-容器和工具",
         collapsable: false,
         sidebarDepth: 1,
         children: [
-            ['线程简介', '线程简介'],
-            ['线程等待通知机制（wait、notify）', '线程等待通知机制（wait、notify）'],
-            ['线程等待操作比较（sleep、wait、park、Condition）', '线程等待操作比较（sleep、wait、park、Condition）'],
-            ['线程关键类-ThreadLocal', '线程关键类-ThreadLocal'],
-            ['线程池简介', '线程池简介'],
-            ['线程池-Executor框架', '线程池-Executor框架'],
+            ['并发容器-阻塞队列', '并发容器-阻塞队列'],
+            ['并发容器-ConcurrentLinkedQueue', '并发容器-ConcurrentLinkedQueue'],
+            ['等待多线程完成-CountDownLatch', '等待多线程完成-CountDownLatch'],
+            ['同步屏障-CyclicBarrier', '同步屏障-CyclicBarrier'],
+            ['控制并发数的信号量-Semaphore', '控制并发数的信号量-Semaphore'],
+            ['线程交换数据-Exchanger', '线程交换数据-Exchanger']
         ]
     }
 ];
