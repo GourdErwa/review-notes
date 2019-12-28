@@ -12,6 +12,9 @@
 - 技术框架
     * [Flink 基础 ](/framework/flink-basis/)
 
+- 面试题
+    * [Java 面试题](/interview/java/)
+
 ## 构建
 - 使用 [vuepress](https://vuepress.vuejs.org/) 发布，使用 [Travis CI](https://travis-ci.org/GourdErwa/review-notes-dev) 持续集成
 - 执行 `npm run docs:dev` 进入本地开发模式， 默认访问 [localhost:8080](http://localhost:8080/ )
