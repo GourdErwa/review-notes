@@ -2,6 +2,8 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人技术博客 [Java 并发编程](https://review-notes.top/language/java-concurrency/)
 
+本专栏学习完成后尝试自我面试 [Java 并发编程面试题](https://gourderwa.blog.csdn.net/article/details/103742102)
+
 #### Java 并发编程-基础篇
 - [Java 内存模型-基础概念 ](https://gourderwa.blog.csdn.net/article/details/103408907)
 - [Java 内存模型-顺序一致性 ](https://gourderwa.blog.csdn.net/article/details/103409054)
@@ -35,10 +37,10 @@ Java 并发编程专栏系列笔记，系统性学习可访问个人技术博客
 - [Java 锁类型总结 ](https://gourderwa.blog.csdn.net/article/details/103590994)
 
 #### Java 并发编程-容器和工具篇
-- Java 并发容器-ConcurrentHashMap（未完成）
+- Java 并发容器-jdk1.8-ConcurrentHashMap（未完成）
 - [Java 并发容器-阻塞队列](https://gourderwa.blog.csdn.net/article/details/103735347)
 - [Java 并发容器-ConcurrentLinkedQueue](https://gourderwa.blog.csdn.net/article/details/103735326)
-- Java 并行任务框架-Fork-Join（未完成）
+- [Java 并行任务框架-ForkJoin](https://gourderwa.blog.csdn.net/article/details/103745243)
 - [Java 等待多线程完成-CountDownLatch](https://gourderwa.blog.csdn.net/article/details/103726642)
 - [Java 同步屏障-CyclicBarrier](https://gourderwa.blog.csdn.net/article/details/103726669)
 - [Java 控制并发数的信号量-Semaphore](https://gourderwa.blog.csdn.net/article/details/103726711)

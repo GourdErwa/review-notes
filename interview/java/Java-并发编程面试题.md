@@ -9,7 +9,7 @@ Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记
 - 把面试看作是费曼学习法中的回顾、授课环节。
     - 首先我们能讲给自己听，如果不满意再回炉学习总结，如此反复。
     - 我们试着在一年以后再回顾这些知识。
-- 按 [《Java 并发编程》](https://review-notes.top/language/java-concurrency/) 专栏知识点顺序整理，精简主要知识点为面试题。
+- CSDN 同步发布 [并发编程专栏](https://blog.csdn.net/xiaohulunb/article/details/103594468)
 
 ## 并发编程面试题-内存模型
 - 说下内存模型

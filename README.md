@@ -6,8 +6,11 @@
 欢迎交流流反馈，提交 [issues]([issues](https://github.com/GourdErwa/review-notes/issues))
 
 ## 笔记内容
-- 编程语言 
-    * [Java 并发编程 ](/language/java-concurrency/)
+- 编程语言
+    * [Java 核心知识（In review） ](/language/java-core/)
+    * [Java 并发编程（In review，80%） ](/language/java-concurrency/)
+    * [Java 虚拟机（JVM)（In review） ](/language/java-jvm/)
+    * [Scala 基础（Checking） ](/language/scala-basis/)
 
 - 技术框架
     * [Flink 基础 ](/framework/flink-basis/)

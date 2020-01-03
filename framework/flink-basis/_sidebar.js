@@ -1,7 +1,7 @@
 module.exports = [
     {
         title: "Flink 基础概念",
-        collapsable: true,
+        collapsable: false,
         sidebarDepth: 1,
         children: [
             ['基础概念', '基础概念'],
@@ -15,7 +15,7 @@ module.exports = [
     },
     {
         title: "DataSet（Batch）",
-        collapsable: true,
+        collapsable: false,
         sidebarDepth: 1,
         children: [
             ['DataSet概览', 'DataSet概览'],
@@ -27,7 +27,7 @@ module.exports = [
         ]
     }, {
         title: "DataStream（Streaming）",
-        collapsable: true,
+        collapsable: false,
         sidebarDepth: 1,
         children: [
             ['DataStream概览', 'DataStream概览'],

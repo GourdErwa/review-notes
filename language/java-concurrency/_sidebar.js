@@ -51,7 +51,9 @@ module.exports = [
         sidebarDepth: 1,
         children: [
             ['并发容器-阻塞队列', '并发容器-阻塞队列'],
+            ['jdk1.8-ConcurrentHashMap', 'jdk1.8-ConcurrentHashMap'],
             ['并发容器-ConcurrentLinkedQueue', '并发容器-ConcurrentLinkedQueue'],
+            ['并行任务框架-ForkJoin', '并行任务框架-ForkJoin'],
             ['等待多线程完成-CountDownLatch', '等待多线程完成-CountDownLatch'],
             ['同步屏障-CyclicBarrier', '同步屏障-CyclicBarrier'],
             ['控制并发数的信号量-Semaphore', '控制并发数的信号量-Semaphore'],
