@@ -1,13 +1,18 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/language/scala-basis) ，[github-源码 ](https://github.com/GourdErwa/scala-advanced/tree/master/scala-base/src/main/scala/com/gourd/scala/base/)，欢迎 Star，转载请附上原文出处链接和本声明。
 
+Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
+
 [[toc]]
 ## 什么是包对象
-Scala 可以在每一个包中定义一个包对象，作为在整个包中方便共享使用的容器。  
-* 包对象中可以定义任何内容，而不仅仅是变量和方法。  
-* 按照惯例，包对象的代码通常放在名为 package.scala 的源文件中。  
+Scala 可以在每一个包中定义一个包对象「package object」，作为在整个包中方便共享使用的容器。
+
+* 包对象中可以定义任何内容，而不仅仅是变量和方法。
+
+* 按照惯例，包对象的代码通常放在名为 package.scala 的源文件中。
+
 * 每个包都允许有一个包对象。在包对象中的任何定义都可以在包中的其他类里面使用。
+
 ```scala
-{
   // 有一个 Fruit 类和三个 Fruit 对象在包 gardening.fruits 中
   package gardening.fruits
   
@@ -39,5 +44,4 @@ Scala 可以在每一个包中定义一个包对象，作为在整个包中方�
   // 包对象和其他对象类似，也可以使用继承来构建。
   package object fruits1 extends FruitAliases with FruitHelpers {}
 
-}
 ```

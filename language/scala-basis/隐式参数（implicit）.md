@@ -1,13 +1,20 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/language/scala-basis) ，[github-源码 ](https://github.com/GourdErwa/scala-advanced/tree/master/scala-base/src/main/scala/com/gourd/scala/base/)，欢迎 Star，转载请附上原文出处链接和本声明。
 
+Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
+
 在参数列表的开头添加了 `implicit` 关键字，该参数列表里的参数即为隐式参数。
-* 一个方法只能有一个隐式参数列表，隐式参数列表中可以定义多个隐式参数。  
-* 在调用方法时，如果没有为隐式参数列表传入值，Scala 会为其自动匹配相应类型的隐式值。 
-* 隐式参数列表只能是最后一个参数列表。 
-* Scala 在调用包含有隐式参数块的方法时，将首先查找可以直接访问的隐式定义和隐式参数。  
+
+* 一个方法只能有一个隐式参数列表，隐式参数列表中可以定义多个隐式参数。
+
+* 在调用方法时，如果没有为隐式参数列表传入值，Scala 会为其自动匹配相应类型的隐式值。
+
+* 隐式参数列表只能是最后一个参数列表。
+
+* Scala 在调用包含有隐式参数块的方法时，将首先查找可以直接访问的隐式定义和隐式参数。
+
 * 其次是在所有伴生对象中查找与隐式候选类型相关的有隐式标记的成员。
+
 ```scala
-{
   abstract class Monoid[A] {
     def add(x: A, y: A): A
     def unit: A
@@ -39,5 +46,4 @@
       println(sum(List("a", "b", "c"))) // abc
     }
   }
-}
 ```
