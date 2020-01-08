@@ -11,8 +11,8 @@ module.exports = [
             ['对象的死亡过程', '对象的死亡过程'],
             ['垃圾收集算法', '垃圾收集算法'],
             ['JDK11-7个垃圾收集器', 'JDK11-7个垃圾收集器'],
-            ['OpenJDK12-Shenandoah收集器','OpenJDK 12-Shenandoah 收集器'],
-            ['OracleJDK11-ZGC收集器','OracleJDK 11-ZGC 收集器']
+            ['OpenJDK12-Shenandoah收集器', 'OpenJDK 12-Shenandoah 收集器'],
+            ['OracleJDK11-ZGC收集器', 'OracleJDK 11-ZGC 收集器']
         ]
     },
     {
@@ -20,7 +20,9 @@ module.exports = [
         collapsable: false,
         sidebarDepth: 1,
         children: [
-            ['诊断命令处理工具大全', '诊断命令处理工具大全']
+            ['诊断命令处理工具大全', '诊断命令处理工具大全'],
+            ['故障诊断-高CPU占用', '故障诊断-高CPU占用'],
+            ['故障诊断-高内存占用', '故障诊断-高内存占用 OOM定位']
         ]
     }
 ];

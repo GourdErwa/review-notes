@@ -24,3 +24,7 @@ Java JVM-虚拟机专栏系列笔记，系统性学习可访问个人复盘笔�
 #### Java JVM-性能监控、故障处理
 
 - [Java JVM JDK13 诊断命令处理工具 jps,jstat,jinfo,jmap,jstack,jcmd](https://gourderwa.blog.csdn.net/article/details/103887785)
+
+- [故障诊断-高CPU占用](https://gourderwa.blog.csdn.net/article/details/103894534)
+
+- [故障诊断-高内存占用 OOM定位](https://gourderwa.blog.csdn.net/article/details/103894558)
