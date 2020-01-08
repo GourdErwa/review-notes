@@ -14,7 +14,7 @@ Java JVM-虚拟机专栏系列笔记，系统性学习可访问个人复盘笔�
 - [jprofiler](https://www.ej-technologies.com/products/jprofiler/overview.html)
 
 ## OutOfMemoryError 相关异常
-一般情况下，OutOfMemoryError 异常后会跟随「Java heap space」描述，如果「Java heap space」一样情况下，可查看异常的调用链「at ...」来定位。
+一般情况下，OutOfMemoryError 异常后会跟随「Java heap space」描述。具体的异常定位还需要参考调用链「at ...」部分来定位。
 
 ### Java 堆内存溢出
 可通过 `-Xms20m -Xmx20m` 设置堆大小。
@@ -27,6 +27,8 @@ Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
 
 ### 字符串常量池溢出
 自 JDK 7 起，原本存放在永久代的字符串常量池被移至 Java 堆之中，所以在 JDK 7 及以上版本，限制方法区的容量对该测试用例来说是毫无意义的。
+
+> 永久代和元空间只是《Java 虚拟机规范》方法区规范的实现，如果还在纠结这些概念可参考我 jvm 专栏的《运行时内存数据区域》内容
 
 ```java
 Exception in thread "main" java.lang.OutOfMemoryError: Java heap space

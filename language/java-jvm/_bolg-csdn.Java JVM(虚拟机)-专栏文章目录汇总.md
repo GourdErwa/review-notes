@@ -3,7 +3,7 @@
 Java JVM-虚拟机专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java JVM-虚拟机 ](https://review-notes.top/language/java-jvm/)
 
 
-Java JVM-虚拟机专栏系列笔记
+#### Java JVM-内存管理
 
 - [Java JVM 运行时内存数据区域](https://gourderwa.blog.csdn.net/article/details/103822458)
 
@@ -19,3 +19,8 @@ Java JVM-虚拟机专栏系列笔记
 
 - [Java JVM JDK11 前的 7 个垃圾收集器](https://gourderwa.blog.csdn.net/article/details/103846592)
 
+- [Java JVM OpenJDK12 - Shenandoah 收集器](https://gourderwa.blog.csdn.net/article/details/103879021)
+
+#### Java JVM-性能监控、故障处理
+
+- [Java JVM JDK13 诊断命令处理工具 jps,jstat,jinfo,jmap,jstack,jcmd](https://gourderwa.blog.csdn.net/article/details/103887785)
