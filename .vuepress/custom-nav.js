@@ -35,9 +35,7 @@ module.exports = [
     // },
     {
         text: '面试题',
-        items: [
-            {text: 'Java 面试题', link: '/interview/java/'}
-        ]
+        link: '/interview/'
     },
     {
         text: '关于',

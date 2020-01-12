@@ -43,6 +43,6 @@
 - JIT 参数配置如何影响程序运行？
 
 ## 更多面试题
-- [Java 并发编程面试题 ](https://review-notes.top/interview/java/)
-- [Java-JVM 虚拟机面试题 ](https://review-notes.top/interview/java/)
+- [Java 并发编程面试题 ](https://review-notes.top/interview/)
+- [Java-JVM 虚拟机面试题 ](https://review-notes.top/interview/)
 

@@ -3,7 +3,7 @@
 ## 说明
 - 无特殊说明，内容基于 JDK 13 整理
 - 主要基于《深入理解 Java 虚拟机：JVM 高级特性与最佳实践（第 3 版）》周志明一书整理，在书籍基础上重新梳理了知识点，增加了个人理解
-- 本专栏学习完成后尝试 [Java-JVM 虚拟机面试题 ](https://review-notes.top/interview/java/)
+- 本专栏学习完成后尝试 [Java-JVM 虚拟机面试题 ](https://review-notes.top/interview/)
 
 ## 专栏同步地址
 - CSDN： [Java 并发编程-专栏文章目录汇总](https://blog.csdn.net/xiaohulunb/article/details/103594468)

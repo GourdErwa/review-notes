@@ -20,9 +20,6 @@ module.exports =
         '/algorithm/data-structures/': require("../algorithm/data-structures/_sidebar"),
 
         // DevOps
-        '/devops/git/': require("../devops/git/_sidebar"),
-
-        // 面试题
-        '/interview/java/': require("../interview/java/_sidebar")
+        '/devops/git/': require("../devops/git/_sidebar")
     }
 ;
