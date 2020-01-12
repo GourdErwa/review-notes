@@ -58,12 +58,14 @@ jstack 10834 |grep 2b05 -A 30
 例如： `jstat -gcutil -t -h 5 PID 500 10`
 
 ## 说明
-> 更多 JDK 相关命令详细用法可参考  [Java JVM JDK13 诊断命令处理工具 jps,jstat,jinfo,jmap,jstack,jcmd](https://blog.csdn.net/xiaohulunb/article/details/103887785)
-
-高内存占用分析可参考本专栏《故障诊断-高内存占用》。
-
-实际生产过程中我们可以使用 dump 文件进行分析，或者使用一些可视化故障处理工具
+实际生产过程中我们可以选择更多的工具进行运行监控、分析 dump 文件：
+- [推荐 Memory Analyzer (MAT)](https://www.eclipse.org/mat/)
 - [jhsdb](https://docs.oracle.com/javase/9/tools/jhsdb.htm)
 - [jconsole](http://openjdk.java.net/tools/svc/jconsole/)
+- [推荐 Flight Recorder-飞行记录仪](https://docs.oracle.com/javacomponents/jmc-5-4/jfr-runtime-guide/run.htm#JFRUH176)
 - [Java Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)
-- [jprofiler](https://www.ej-technologies.com/products/jprofiler/overview.html)
+- [推荐 jprofiler-付费 ](https://www.ej-technologies.com/products/jprofiler/overview.html)
+
+> 更多 JDK 相关命令详细用法可参考  [Java JVM JDK13 诊断命令处理工具 jps,jstat,jinfo,jmap,jstack,jcmd](https://blog.csdn.net/xiaohulunb/article/details/103887785)
+
+更多故障诊断及调优，参考本专栏 [Java JVM（JDK13）-专栏文章目录汇总](https://blog.csdn.net/xiaohulunb/article/details/103828570)。

@@ -15,13 +15,11 @@ ThreadLocal 表示每个线程存储的数据类型 T ，每个线程在一个 T
 
 > 如果我们在线程上要存储多个数据值时，可以创建多个 ThreadLocal 实例。
 
+<div align="center">
+    <img src="https://blog-review-notes.oss-cn-beijing.aliyuncs.com/language/java-concurrency/_images/ThreadLocal-结构图.jpeg">
+</div>
 
-ThreadLocal 实例中存储的值是如何保存在对应的线程里呢？   
-每个 Thread 内部维护了一个 `ThreadLocal.ThreadLocalMap threadLocals = null;` 变量。我们每次操作 ThreadLocal 时其实底层是获取到当前线程后操作内部的 threadLocals 变量。
-
-ThreadLocal.ThreadLocalMap 是一个`Entry[] table`存储结构，通过 ThreadLocal 实例对象的 HashCode 操作后定位数组下标。
-
-***
+源码解析：
 - ThreadLocal set/get 方法源码解析：
 ```java
 public class ThreadLocal<T> {

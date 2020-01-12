@@ -70,6 +70,8 @@ public class SynchronizedExample {
 ## Java 对象头
 >推荐工具-[分析 JVM 中的对象布局方案的微型工具箱 openjdk-jol ](http://openjdk.java.net/projects/code-tools/jol/)
 
+有关对象头的详细介绍参考我的另一篇文章 [Java JVM 对象的创建与访问过程](https://gourderwa.blog.csdn.net/article/details/103828111)
+
 synchronized 用的锁是存在 Java 对象头里的。（1 字宽 等于 4 字节，即 32bit）
 - 如果对象是数组类型，则虚拟机用 3 个字宽 (Word) 存储对象头
 - 如果对象是非数组类型，则用 2 字宽存储对象头。在 32 位虚拟机中  
