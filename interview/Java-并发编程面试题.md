@@ -1,18 +1,20 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/language/java-concurrency) ，[github-源码 ](https://github.com/GourdErwa/java-advanced/tree/master/java-concurrency)，欢迎 Star，转载请附上原文出处链接和本声明。
 
-Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程 ](https://review-notes.top/language/java-concurrency/)
+## 自我面试
+- 背书式的学习对技术的提升帮助很小。
 
-## 吊打自己
-- 不推荐什么吊打面试官，我们先吊打自己，争取打败自己。
-- 本篇内容不涉及答案，答案需要去 [《Java 并发编程》](https://review-notes.top/language/java-concurrency/) 专栏学习。
-- 不推荐背书式的面试准备。
+- 本篇内容不涉及答案，答案需要去相关专栏学习。
+
 - 把面试看作是费曼学习法中的回顾、授课环节。
     - 首先我们能讲给自己听，如果不满意再回炉学习总结，如此反复。
     - 我们试着在一年以后再回顾这些知识。
-- CSDN 同步发布 [并发编程专栏](https://blog.csdn.net/xiaohulunb/article/details/103594468)
+
+**专栏学习地址：**    
+- CSDN-同步发布 [Java 并发编程专栏 ](https://blog.csdn.net/xiaohulunb/article/details/103828570)
+- 个人技术博客-同步发布 [Java 并发编程专栏 ](https://review-notes.top/language/java-concurrency/)
 
 ## 并发编程面试题-内存模型
-- 说下内存模型
+- 内存模型
     - 定义
     - 为什么要有内存模型
     - 为什么要重排序，重排序在什么时候排
@@ -74,3 +76,7 @@ Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记
 - Exchanger 怎么实现的，什么时候考虑用？
 - ConcurrentHashMap 实现？
 - fork/join 框架是什么？
+
+## 更多面试题
+- [Java 并发编程面试题 ](https://review-notes.top/interview/java/)
+- [Java-JVM 虚拟机面试题 ](https://review-notes.top/interview/java/)
