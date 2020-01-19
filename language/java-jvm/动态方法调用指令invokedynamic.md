@@ -53,26 +53,28 @@ BootstrapMethods:  // 引导方法
 
 大体流程：
 
-- 编译期间将 Lambda 表达式编译为一个新的方法，如果表达式与外部成员变量没有关联，编译为静态方法，否则编译为非静态方法。
+- javac 编译期间将 Lambda 表达式内容编译为一个新的方法，如果表达式与外部成员变量没有关联，编译为静态方法，否则编译为非静态方法。
 
-  上述示例被编译为 `private static void lambda$lambda1$0`方法。
-- 代码执行 invokedynamic 指令时，将执行 invokestatic 指令调用 BootstrapMethods(引导方法) `LambdaMetafactory.metafactory` 方法返回一个动态调用站点对象 CallSite
+  上述示例被编译为 `private static void lambda$lambda1$0` 静态方法。
+- 代码执行 invokedynamic 指令时，将调用常量池对应的 BootstrapMethods(引导方法) ，引导方法返回一个动态调用站点对象 CallSite，该对象绑定了要执行的方法句柄。
+ 
+  上述示例引导方法为 `#23 LambdaMetafactory.metafactory` ，该方法返回一个动态调用站点对象 CallSite
+- 动态调用站点对象 CallSite 上绑定了 `lambda$lambda1$0` 方法相关的信息（参考字节码 #25）。
 
-- 动态调用站点对象 CallSite 上绑定了与 `lambda$lambda1$0` 方法有关的信息，可理解为执行方法句柄 MethodHandle 为 `lambda$lambda1$0`
-
-- 之后执行 `runnable.run();` 代码时，虚拟机则直接调用已经绑定了的调用点所链接的方法 `lambda$lambda1$0`
+- 之后执行 `runnable.run();` 代码时，虚拟机则直接调用已经绑定了调用点所链接的 `lambda$lambda1$0` 方法。
 
 ## 参考
 - 动态调用站点 CallSite 对象有关的更多字段类型可参考 AbstractValidatingLambdaMetafactory 类定义。
 
+- [官方-Using the invokedynamic Instruction](https://docs.oracle.com/en/java/javase/13/vm/support-non-java-languages.html#GUID-5A6C7674-3FE3-48EC-A685-5F71FDBFE921)
 - [Java 8 的 Lambda 表达式为什么要基于 invokedynamic？](https://www.zhihu.com/question/39462935)
 ## 本专栏更多相关笔记
-- [Java JVM 运行时栈帧结构、字节码分析实战](https://gourderwa.blog.csdn.net/article/details/103979966)
+- [Java JVM 运行时栈帧结构、字节码分析实战 ](https://gourderwa.blog.csdn.net/article/details/103979966)
 
-- [Java JVM 字节码指令，指令表收录](https://gourderwa.blog.csdn.net/article/details/103976523)
+- [Java JVM 字节码指令，指令表收录 ](https://gourderwa.blog.csdn.net/article/details/103976523)
 
 - [Java JVM 字节码-为什么 new 指令后执行 dup 指令?](https://gourderwa.blog.csdn.net/article/details/103990943)
 
-- [Java JVM 从方法调用的角度分析重载、重写的本质](https://gourderwa.blog.csdn.net/article/details/103995120)
+- [Java JVM 从方法调用的角度分析重载、重写的本质 ](https://gourderwa.blog.csdn.net/article/details/103995120)
 
 - [Java JVM 动态方法调用之方法句柄 MethodHandle](https://gourderwa.blog.csdn.net/article/details/104024058)

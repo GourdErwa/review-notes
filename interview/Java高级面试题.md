@@ -1,19 +1,22 @@
-> 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/language/java-concurrency) ，[github-源码 ](https://github.com/GourdErwa/java-advanced/tree/master/java-concurrency)，欢迎 Star，转载请附上原文出处链接和本声明。
 
 ## 自我面试
 - 背书式的学习对技术的提升帮助很小。
 
 - 本篇内容不涉及答案，答案需要去相关专栏学习。
 
-- 把面试看作是费曼学习法中的回顾、授课环节。
-    - 首先我们能讲给自己听，如果不满意再回炉学习总结，如此反复。
-    - 我们试着在一年以后再回顾这些知识。
+- 把面试看作是费曼学习法中的回顾、授课环节。首先我们能讲给自己听，如果不满意再回炉学习总结，如此反复。
 
-**专栏学习地址：**    
+**专栏学习地址：**
 - CSDN-同步发布 [Java 并发编程专栏 ](https://blog.csdn.net/xiaohulunb/article/details/103828570)
+
+- CSDN-同步发布 [Java 虚拟机（JVM) 专栏 ](https://blog.csdn.net/xiaohulunb/article/details/103828570)
+
 - 个人技术博客-同步发布 [Java 并发编程专栏 ](https://review-notes.top/language/java-concurrency/)
 
-## 并发编程面试题-内存模型
+- 个人技术博客-同步发布 [Java 虚拟机（JVM) 专栏 ](https://review-notes.top/language/java-jvm/)
+
+## 一、并发编程
+### 内存模型
 - 内存模型
     - 定义
     - 为什么要有内存模型
@@ -32,7 +35,7 @@
 - 比较下 CAS 、volatile 、synchronized、Lock 区别
 - 原子操作类底层实现机制？自增操作是怎么保证原子性的？
 
-## 并发编程面试题-线程
+### 线程
 - 线程的状态有哪些
 - 如何在 Java 中实现线程？
 - 如何在 Java 中启动一个线程？
@@ -51,7 +54,7 @@
 - JUC 包中提供了哪些配置好的线程池，差异化是什么
 - 什么是 FutureTask？
 
-## 并发编程面试题-锁
+### 锁
 - Lock 接口提供了哪些实现类
 - AQS 是什么，提供了哪些方法
 - AQS 中独占锁和共享锁的操作流程大体描述一下
@@ -64,7 +67,7 @@
 - 说说 Java 中有哪些锁
 - sleep、wait、park、Condition 都能让线程等待，有什么区别？
 
-## 并发编程面试题-容器与工具
+### 容器与工具
 - 阻塞和非阻塞有什么区别，他们可以用什么方式实现
 - 队列（Queue）提供哪些操作
 - 阻塞队列提供了哪些获取元素的方法，有什么区别？
@@ -77,6 +80,39 @@
 - ConcurrentHashMap 实现？
 - fork/join 框架是什么？
 
-## 更多面试题
-- [Java 并发编程面试题 ](https://review-notes.top/interview/java/)
-- [Java-JVM 虚拟机面试题 ](https://review-notes.top/interview/java/)
+## 二、JVM 虚拟机面试题
+### 内存管理
+- 为什么需要 JVM？
+- 简单描述 JMM 和 JVM 两个概念
+- JVM 内存管理
+- 永久代、元空间、方法区的关系
+- 类加载过程
+- 双亲委派模式有什么好处
+- 如何覆盖 JDK 提供的组件，比如覆盖 ArrayList 的实现
+- new 一个对象的过程发生了什么（类加载、变量初始化、内存分配）
+- 对象的死亡过程
+- JVM 可能会抛出哪些 OOM
+- 垃圾回收算法有哪些？优缺点比较
+- 熟知的垃圾回收器有哪些，简单描述每个应用场景
+- CMS 和 G1 的垃圾回收步骤是？
+- G1 相对于 CMS 的优缺点
+
+### 性能监控与调优
+- 如何监控 GC
+- 常见 OutOfMemoryError 有哪些
+- 常见的 JDK 诊断命令有哪些，应用场景？
+- CPU 较高，如何定位问题
+- 内存占用较高，如何定位大对象
+- 内存泄漏时，如何实时跟踪内存变化情况
+- 内存泄漏时，如何定位问题代码
+- 大型项目如何进行性能瓶颈调优？
+
+### 虚拟机子系统
+- 字节码是如何在 JVM 中进行流转的（栈帧）
+- 方法调用的底层实现
+- 方法重写和重载的实现过程
+- invokedynamic 指令实现
+- 如何修改字节码
+- JIT 参数配置如何影响程序运行？
+- 虚拟机有哪些性能优化策略
+

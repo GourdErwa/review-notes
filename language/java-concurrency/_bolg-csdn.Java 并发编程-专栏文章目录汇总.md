@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人技术博客 [Java 并发编程 ](https://review-notes.top/language/java-concurrency/)
 
-本专栏学习完成后尝试自我面试 [Java 并发编程面试题 ](https://gourderwa.blog.csdn.net/article/details/103742102)
+本专栏学习完成后尝试自我面试 [Java 高级面试题 ](https://gourderwa.blog.csdn.net/article/details/104042317)
 
 #### 并发编程-基础篇
 - [内存模型-基础概念 ](https://gourderwa.blog.csdn.net/article/details/103408907)
@@ -46,4 +46,7 @@ Java 并发编程专栏系列笔记，系统性学习可访问个人技术博客
 - [控制并发数的信号量-Semaphore](https://gourderwa.blog.csdn.net/article/details/103726711)
 - [线程交换数据-Exchanger](https://gourderwa.blog.csdn.net/article/details/103726701)
 
-Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程 ](https://review-notes.top/language/java-concurrency/)
+## 专栏更多文章笔记
+- [Java 核心知识-专栏文章目录汇总 ](https://gourderwa.blog.csdn.net/article/details/104020339)
+
+- [Java JVM（JDK13）-专栏文章目录汇总 ](https://blog.csdn.net/xiaohulunb/article/details/103828570)
