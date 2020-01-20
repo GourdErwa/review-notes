@@ -83,7 +83,7 @@ reflect 中的 Method 对象远比 invoke 中的 MethodHandle 对象所包含的
 
 - invoke API 则设计为可服务于所有 Java 虚拟机之上的语言
 
-## 四、java.lang.invoke 包方法句柄 MethodHandle
+## 五、java.lang.invoke 包方法句柄 MethodHandle
 
 MethodHandles.Lookup 提供了较多的静态方法可以快速创建 MethodHandle 对象，部分方法与常量池映射表：
 

@@ -8,4 +8,4 @@
 
 ## 面试题
 
-- [Java 高级面试题](/interview/Java高级面试题.md)
+- [Java 面试题（中高级）](/interview/Java中高级面试题.md)

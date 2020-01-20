@@ -7,7 +7,7 @@
 - 把面试看作是费曼学习法中的回顾、授课环节。首先我们能讲给自己听，如果不满意再回炉学习总结，如此反复。
 
 **专栏学习地址：**
-- CSDN-同步发布 [Java 并发编程专栏 ](https://blog.csdn.net/xiaohulunb/article/details/103828570)
+- CSDN-同步发布 [Java 并发编程专栏 ](https://blog.csdn.net/xiaohulunb/article/details/103594468)
 
 - CSDN-同步发布 [Java 虚拟机（JVM) 专栏 ](https://blog.csdn.net/xiaohulunb/article/details/103828570)
 
@@ -15,7 +15,7 @@
 
 - 个人技术博客-同步发布 [Java 虚拟机（JVM) 专栏 ](https://review-notes.top/language/java-jvm/)
 
-## 一、并发编程
+## 一、并发编程面试题
 ### 内存模型
 - 内存模型
     - 定义
@@ -66,6 +66,8 @@
 - 死锁怎么产生的，如何避免
 - 说说 Java 中有哪些锁
 - sleep、wait、park、Condition 都能让线程等待，有什么区别？
+- 所谓 sleep 不会释放锁，wait 会释放锁，释放锁后重新获取时它的上下文数据如何处理的？
+- 释放锁会让 CPU 进行上下文切换吗？
 
 ### 容器与工具
 - 阻塞和非阻塞有什么区别，他们可以用什么方式实现
