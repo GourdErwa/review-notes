@@ -2,7 +2,7 @@
 
 Java JVM-虚拟机专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java JVM-虚拟机 ](https://review-notes.top/language/java-jvm/)
 
-[[toc]]
+[toc]
 
 ## 一、前言
 Java 源文件最终编译为 Class 文件，Class 文件中描述的各类信息，最终都需要加载到虚拟机中之后才能被运行和使用。

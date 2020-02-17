@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程 ](https://review-notes.top/language/java-concurrency/)
 
-[[toc]]
+[toc]
 ## CAS 是什么
 CAS 是英文单词 Compare And Swap 的缩写，翻译过来就是比较并替换。Java 的 compareAndSet(jdk13)/compareAndSwap(jdk1.8) 相关方法调用简称为 CAS。
 

@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程](https://review-notes.top/language/java-concurrency/)
 
-[[toc]]  
+[toc]
 ## 比较说明
 本节内容主要从 CAS 、volatile 、synchronized、Lock 进行对比分析并发实现的差异。    
 

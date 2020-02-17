@@ -2,7 +2,7 @@
 
 Java 核心知识专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 核心知识 ](https://review-notes.top/language/java-core/)
 
-[[toc]]
+[toc]
 
 ## 一、前言
 本节内容主要研究 for、foreach 循环的底层实现原理，再比较两种实现方式的性能。最后通过 RandomAccess 接口说明 JDK 让我们怎么去识别集合是否支持随机访问。
@@ -102,13 +102,15 @@ for (int i = 0; i < list.size(); i++) {
 52 iinc 2 by 1
 55 goto 31 (-24)
 ```
-1. 从字节码层面分析，发现 foreach 会生成 Iterator 对象，而且这个对象时调用实时创建的，而且在整个 迭代过程中，hasNext 方法处理逻辑比较复杂。以 ArrayList 为例：
+1. 从字节码层面分析，发现 foreach 会生成 Iterator 对象，而且在调用时实时创建的。并且在整个迭代过程中，hasNext 方法处理逻辑比较复杂。
+
+以 ArrayList 源码为例：
 ```java
 public Iterator<E> iterator() {
-        return new Itr();
+        return new Itr(); // 每次调用实时创建返回
 }
 
-// Itr 类中的 next 方法如下：
+// ArrayList.Itr 类中的 next 方法如下：
 public E next() {
     checkForComodification();
     int i = cursor;
@@ -122,7 +124,7 @@ public E next() {
 }
 ```
 
-2. 如果我们用 for 时，只需要根据下标取对应的数据即可
+2. 如果我们用 for 时，只需要根据下标值，取对应的数据即可
 ```java
 public E get(int index) {
     Objects.checkIndex(index, size);
@@ -131,13 +133,13 @@ public E get(int index) {
 ```
 
 ## 五、RandomAccess 接口让我们尽量使用 for 循环
-1. RandomAccess 接口是干什么的？
+1. **RandomAccess 接口是干什么的？**
 ```java
 public interface RandomAccess { }
 ```
 我们可以看到这个接口没有任何实现，它仅仅起一个标识的作用，标识这个集合是否支持随机访问。类似于 `Serializable, Cloneable`。
 
-2. RandomAccess 有什么用？
+2. **RandomAccess 接口有什么用？**
 
 举个例子：
 
@@ -156,7 +158,8 @@ public <T extends Object> void randomAccess(List<T> list) {
     }
 }
 ```
-现在我们知道为什么 Set 接口没有实现 RandomAccess 接口了吧。这也是为什么 Set 不能通过下标取值的原因。
+现在我们知道为什么 Set 接口没有实现 RandomAccess 接口了。这也是为什么 Set 不能通过下标取值的原因之一。
+> Set 底层一般通过 Map 集合的 Key 实现的。我们知道 Map 作为一个哈希表底层使用链表节点存储。因此不支持随机访问。这也是为什么 Set 没有 `get(int index)` 方法的根本原因。
 
 ## 专栏更多文章笔记
 - [Java 核心知识-专栏文章目录汇总 ](https://gourderwa.blog.csdn.net/article/details/104020339)

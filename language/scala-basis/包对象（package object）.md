@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]]
+[toc]
 ## 什么是包对象
 Scala 可以在每一个包中定义一个包对象「package object」，作为在整个包中方便共享使用的容器。
 

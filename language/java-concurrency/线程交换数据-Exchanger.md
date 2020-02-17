@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程 ](https://review-notes.top/language/java-concurrency/)
 
-[[toc]]
+[toc]
 ## Exchanger 是什么
 Exchanger(交换者) 是一个线程间协作的工具类，用于进行线程间的数据交换。
 

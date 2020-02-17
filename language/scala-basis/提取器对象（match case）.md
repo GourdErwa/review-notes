@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]]
+[toc]
 ## 什么是提取器对象
 提取器对象是一个包含有 unapply 方法的单例对象。
 

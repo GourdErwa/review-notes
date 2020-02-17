@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]] 
+[toc]
 ## 如何定义一个类
 使用关键字 `class + 标识符` 来定义一个最简单的类，类名首字母应大写。  
 * 使用关键字 new 来创建类的实例。  

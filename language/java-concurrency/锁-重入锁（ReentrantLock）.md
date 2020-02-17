@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程](https://review-notes.top/language/java-concurrency/)
 
-[[toc]]
+[toc]
 ## 重入锁-ReentrantLock
 重入锁 ReentrantLock，就是支持重进入的锁，它表示该锁能够支持一个线程对资源的重复加锁（排他锁）。除此之外，该锁的还支持获取锁时的公平和非公平性选择。
 

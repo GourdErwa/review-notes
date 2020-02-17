@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程](https://review-notes.top/language/java-concurrency/)
 
-[[toc]]
+[toc]
 ## ThreadLocal 是什么
 ThreadLocal 提供了线程内存储变量的能力，这些变量不同之处在于每一个线程读取的变量是对应的、互相独立的。通过 get 和 set 方法就可以得到当前线程对应的值。
 

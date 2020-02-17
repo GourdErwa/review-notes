@@ -2,5 +2,5 @@
 
 计算机网络理论专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [计算机网络 ](https://review-notes.top/algorithm/network)
 
-[[toc]]
+[toc]
 

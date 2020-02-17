@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]]  
+[toc]
 ## 什么是复合类型
 复合类型是指一个对象的类型是多种类型的子类型，即多个类型的交集。
 

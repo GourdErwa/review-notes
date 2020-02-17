@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]]
+[toc]
 ## 什么是案例类
 案例类 (Case classes) 和普通类差不多，但是有几点关键差别： 
 * 案例类创建之后，scala 还会为其自动创建一个半生对象，里面包含了 apply 和 unapply 方法。      

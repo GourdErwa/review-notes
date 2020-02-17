@@ -2,7 +2,7 @@
 
 Java JVM-虚拟机专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java JVM-虚拟机 ](https://review-notes.top/language/java-jvm/)
 
-[[toc]]
+[toc]
 ## 一、为什么 new 指令后执行 dup 指令？
 
 在做字节码分析时，发现每次 new 指令后跟随着 dup 指令，这 2 个指令的说明：

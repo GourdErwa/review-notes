@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]] 
+[toc]
 ## 什么是混入
 当某个特质被用于组合类时，被称为混入。  
 * 一个类只能有一个父类，但是可以有多个混入。

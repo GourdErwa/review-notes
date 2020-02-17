@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]]  
+[toc]
 ## 什么是特质
 特质用于在类之间共享程序接口和字段。  
 * 特质类似于 Java 中的接口。 

@@ -1,7 +1,7 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[github-源码 ](https://github.com/GourdErwa/flink-advanced)，欢迎 Star，转载请附上原文出处链接和本声明。
 本节内容对应[官方文档 ](https://ci.apache.org/projects/flink/flink-docs-release-1.9/zh/dev/batch/#semantic-annotations)，本节内容对应[示例源码 ](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/batch/SemanticAnnotations.scala)  
 
-[[toc]]
+[toc]
 
 语义注解可用于为 Flink 提供有关函数行为的提示。它们告诉系统函数读取和评估函数输入的哪些字段，以及未修改的函数将哪些字段从其输入转发到输出。  
 语义注解是加快执行速度的强大方法，因为它们使系统能够推理出在多个操作之间重用排序顺序或分区。  

@@ -7,8 +7,22 @@ module.exports = {
     // base: '/review-notes/',
     markdown: {
         lineNumbers: false, // 代码块显示行号
-        toc: {includeLevel: [2, 3]}
+        toc: {includeLevel: [2, 3], "markerPattern": /^\[toc\]/im},
+        extendMarkdown: md => {
+            md.set({html: true}),
+                md.use(require("markdown-it-katex"))
+        }
     },
+    head: [ // 数学公式
+        ['link', {
+            rel: 'stylesheet',
+            href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'
+        }],
+        ['link', { // 数学公式
+            rel: "stylesheet",
+            href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"
+        }]
+    ],
     themeConfig: {
         displayAllHeaders: false, // 当前活动页面的标题
         lastUpdated: '最后修改时间', // string | boolean

@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程 ](https://review-notes.top/language/java-concurrency/)
 
-[[toc]]
+[toc]
 ## CyclicBarrier 是什么
 CyclicBarrier 的字面意思是可循环使用的屏障。主要是让一组线程到达一个"屏障"时被阻塞，直到最后一个线程到达屏障时，屏障才会开门，所有被屏障拦截的线程才会继续运行。
 

@@ -2,7 +2,7 @@
 
 Java 核心知识专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 核心知识 ](https://review-notes.top/language/java-core/)
 
-[[toc]]
+[toc]
 
 ## 一、前言
 一般情况我们通过反射可以调用方法，JDK 7 以后新增了 java.lang.invoke 包也可以进行方法调用。

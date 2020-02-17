@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]]  
+[toc]
 ## 什么是抽象类型
 特质和抽象类可以包含一个抽象类型成员，由 `type` 关键字定义，实际类型可以在具体实现类中定义。
 ```scala

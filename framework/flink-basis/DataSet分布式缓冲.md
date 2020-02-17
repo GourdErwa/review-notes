@@ -1,7 +1,7 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[github-源码 ](https://github.com/GourdErwa/flink-advanced)，欢迎 Star，转载请附上原文出处链接和本声明。
 本节内容对应[官方文档 ](https://ci.apache.org/projects/flink/flink-docs-release-1.9/zh/dev/batch/#distributed-cache)，本节内容对应[示例源码 ](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/batch/DistributedCache.scala)  
 
-[[toc]]
+[toc]
 # DataSet 分布式缓冲
 Flink 提供了一个分布式缓存，类似于 hadoop，可以使用户在并行函数中很方便的读取本地文件，并把它放在 taskManager 节点中，防止 task 重复拉取。  
 

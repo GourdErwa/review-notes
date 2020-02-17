@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]]
+[toc]
 ## 什么是 For 表达式
 一个轻量级的标记方式用来表示序列推导，具体形式 `for (enumerators) yield e`。  
 enumerators 指一组以分号分隔的枚举器。一个 enumerator 要么是一个产生新变量的生成器，要么是一个过滤器。   

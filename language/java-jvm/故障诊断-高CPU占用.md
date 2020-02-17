@@ -2,7 +2,7 @@
 
 Java JVM-虚拟机专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java JVM-虚拟机 ](https://review-notes.top/language/java-jvm/)
 
-[[toc]]
+[toc]
 
 ## 排查过程
 - 执行 `top` 命令，定位高 CPU 占用的 PID

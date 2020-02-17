@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程](https://review-notes.top/language/java-concurrency/)
 
-[[toc]]
+[toc]
 
 ## 读写锁-ReentrantReadWriteLock
 之前提到锁 (ReentrantLock、synchronized) 基本都是排他锁。

@@ -1,6 +1,6 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[github-源码 ](https://github.com/GourdErwa/flink-advanced)，欢迎 Star，转载请附上原文出处链接和本声明。
 
-[[toc]]
+[toc]
 # DataSet分配唯一标识符
 在某些算法中，可能需要为数据集元素分配唯一标识符。[[org.apache.flink.api.scala.utils.DataSetUtils]] scala 包装类  
 具体实现源码可参考 [DataSetUtils](https://github.com/apache/flink/blob/master//flink-java/src/main/java/org/apache/flink/api/java/utils/DataSetUtils.java)

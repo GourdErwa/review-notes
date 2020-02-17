@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程 ](https://review-notes.top/language/java-concurrency/)
 
-[[toc]]
+[toc]
 ## CountDownLatch 是什么
 CountDownLatch 允许一个或多个线程等待其他线程完成操作。
 

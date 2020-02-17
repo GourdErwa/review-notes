@@ -2,7 +2,7 @@
 
 Scala 编程语言专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Scala 编程语言 ](https://review-notes.top/language/scala-basis/)
 
-[[toc]] 
+[toc]
 ## 元组
 在 Scala 中，元组是一个可以容纳不同类型元素的类。  
 元组是不可变的，当我们需要从函数返回多个值时，元组会派上用场。  

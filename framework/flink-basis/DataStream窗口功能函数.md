@@ -1,7 +1,7 @@
 > 专栏原创出处：[github-源笔记文件 ](https://github.com/GourdErwa/review-notes/tree/master/framework/flink-basis) ，[github-源码 ](https://github.com/GourdErwa/flink-advanced)，欢迎 Star，转载请附上原文出处链接和本声明。
 本节内容对应[官方文档 ](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/stream/operators/windows.html#window-functions)，本节内容对应[示例源码 ](https://github.com/GourdErwa/flink-advanced/blob/master/src/main/scala/io/gourd/flink/scala/games/streaming/operators/windows/functions)  
 
-[[toc]]   
+[toc]
 ## 1 窗口函数概念
 窗口函数为每个窗口上执行计算。一旦确定某个窗口已准备好进行处理，就可以使用该窗口函数来处理每个（可能是 Keyed Windows）窗口的元素
 > 窗口机制（```scala：Flink DataStream 窗口机制）

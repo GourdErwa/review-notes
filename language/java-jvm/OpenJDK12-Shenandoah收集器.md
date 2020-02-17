@@ -2,7 +2,7 @@
 
 Java JVM-虚拟机专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java JVM-虚拟机 ](https://review-notes.top/language/java-jvm/)
 
-[[toc]]
+[toc]
 ## 前言
 最初 Shenandoah 是由 RedHat 公司独立发展的新型收集器项目，在 2014 年 RedHat 把 Shenandoah 贡献给了 OpenJDK，并推动它成为 [OpenJDK 12](https://wiki.openjdk.java.net/display/shenandoah/main) 的正式特性之一。
 

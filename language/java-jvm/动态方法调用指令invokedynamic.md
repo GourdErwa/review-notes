@@ -2,7 +2,7 @@
 
 Java JVM-虚拟机专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java JVM-虚拟机 ](https://review-notes.top/language/java-jvm/)
 
-[[toc]]
+[toc]
 ## 一、前言
 
 对于 invokedynamic 指令的实现需要方法句柄作为前提知识点。可参考 [Java JVM 动态方法调用之方法句柄 MethodHandle](https://gourderwa.blog.csdn.net/article/details/104024058)。

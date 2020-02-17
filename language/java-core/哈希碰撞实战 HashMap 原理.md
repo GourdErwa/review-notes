@@ -2,7 +2,7 @@
 
 Java 核心知识专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 核心知识 ](https://review-notes.top/language/java-core/)
 
-[[toc]]
+[toc]
 
 ## HashMap
 基于 jdk1.8 讲解分析。本篇不涉及太多源码讲解，重点为采用**哈希碰撞实战分析**处理过程。

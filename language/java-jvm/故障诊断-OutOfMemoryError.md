@@ -2,7 +2,7 @@
 
 Java JVM-虚拟机专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java JVM-虚拟机 ](https://review-notes.top/language/java-jvm/)
 
-[[toc]]
+[toc]
 
 ## 前言
 实际代码执行过程中经常遇到 OOM 相关异常，本篇内容基于 JDK13 总结各种 OOM 相关联内存区域。方便定位是哪一块内存区域的问题，然后进行参数调优。

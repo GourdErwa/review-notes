@@ -2,7 +2,7 @@
 
 Java 并发编程专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [Java 并发编程](https://review-notes.top/language/java-concurrency/)
 
-[[toc]]  
+[toc]
 ## 1 final 域的内存语义
 对 final 域的读和写更像是普通的变量访问。下面将介绍 final 域的内存语义。  
 

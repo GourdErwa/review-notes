@@ -2,5 +2,5 @@
 
 分布式理论专栏系列笔记，系统性学习可访问个人复盘笔记-技术博客 [分布式理论 ](https://review-notes.top/algorithm/distributed-theory)
 
-[[toc]]
+[toc]
 
