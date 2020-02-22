@@ -17,13 +17,20 @@ Java 核心知识专栏系列笔记，系统性学习可访问个人技术博客
 
 - [从底层实现角度理解 java 中的 null 是什么](https://gourderwa.blog.csdn.net/article/details/104054226)
 
+- [Java 从字节码的角度谈代码优化的假象](https://gourderwa.blog.csdn.net/article/details/104402469)
+
 #### 集合
 - [哈希碰撞实战- HashMap 原理](https://blog.csdn.net/xiaohulunb/article/details/103809321)
 
 #### 反射与动态类型
 - [反射调用静态方法](https://blog.csdn.net/xiaohulunb/article/details/104020384)
 
-## 专栏更多文章笔记
-- [并发编程-专栏文章目录汇总 ](https://blog.csdn.net/xiaohulunb/article/details/103594468)
+> 更多相关专栏内容汇总：
+>- [Java 核心知识-专栏文章目录汇总 ](https://gourderwa.blog.csdn.net/article/details/104020339)
+>- [Java 并发编程-专栏文章目录汇总 ](https://blog.csdn.net/xiaohulunb/article/details/103594468)
+>- [Java JVM（JDK13）-专栏文章目录汇总 ](https://blog.csdn.net/xiaohulunb/article/details/103828570)
+>- [数据结构与算法-专栏文章目录汇总 ](https://blog.csdn.net/xiaohulunb/article/details/104368031)
 
-- [JVM（JDK13）-专栏文章目录汇总 ](https://blog.csdn.net/xiaohulunb/article/details/103828570)
+<div align="center">
+    <img src="https://blog-review-notes.oss-cn-beijing.aliyuncs.com/gourderwa.footer.jpeg">
+</div>

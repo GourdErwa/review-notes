@@ -2,7 +2,7 @@ module.exports = [
     {
         title: "Java JVM-内存管理",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['运行时内存数据区域', '运行时内存数据区域'],
             ['引用有什么用', '引用有什么用'],
@@ -19,7 +19,7 @@ module.exports = [
     {
         title: "Java JVM-性能监控、故障处理",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['故障诊断-OutOfMemoryError', '故障诊断-OutOfMemoryError'],
             ['诊断命令处理工具大全', '诊断命令处理工具大全'],
@@ -30,7 +30,7 @@ module.exports = [
     {
         title: "Java JVM-虚拟机子系统",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['字节码指令-指令表收录', '字节码指令-指令表收录'],
             ['运行时栈帧结构', '运行时栈帧结构'],

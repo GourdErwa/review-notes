@@ -2,7 +2,7 @@ module.exports = [
     {
         title: "网络原理-基础",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['HTTP协议', 'HTTP协议'],
             ['HTTPS协议', 'HTTPS协议'],

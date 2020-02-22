@@ -2,7 +2,7 @@ module.exports = [
     {
         title: "SparkCore-入门",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ["spark入门介绍", "spark 入门介绍"],
             ["RDD", "RDD"],

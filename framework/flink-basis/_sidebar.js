@@ -2,7 +2,7 @@ module.exports = [
     {
         title: "Flink 基础概念",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['基础概念', '基础概念'],
             ['运行环境', '运行环境'],
@@ -16,7 +16,7 @@ module.exports = [
     {
         title: "DataSet（Batch）",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['DataSet概览', 'DataSet概览'],
             ['DataSet分配唯一标识符', 'DataSet分配唯一标识符'],
@@ -28,7 +28,7 @@ module.exports = [
     }, {
         title: "DataStream（Streaming）",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['DataStream概览', 'DataStream概览'],
             ['DataStream时间水印机制', 'DataStream时间水印机制'],

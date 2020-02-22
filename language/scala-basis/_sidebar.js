@@ -2,7 +2,7 @@ module.exports = [
     {
         title: "Scala 基础-语言特征",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ["基础知识", "基础知识"],
             ['统一类型', '统一类型'],

@@ -1,6 +1,7 @@
 
 ## 资源收藏
-- [开发者珍品收藏](/devops/dev-tools/开发者珍品收藏.md)
+
+- [开发者收藏](/devops/dev-tools/开发者珍品收藏.md)
 
 ## Jetbrains 产品
 

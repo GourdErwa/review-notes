@@ -2,7 +2,7 @@ module.exports = [
     {
         title: "Java 并发编程-基础",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['内存模型-基础概念', '内存模型-基础概念'],
             ['内存模型-顺序一致性', '内存模型-顺序一致性'],
@@ -19,7 +19,7 @@ module.exports = [
     {
         title: "Java 并发编程-线程",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['线程简介', '线程简介'],
             ['线程等待通知机制（wait、notify）', '线程等待通知机制（wait、notify）'],
@@ -32,7 +32,7 @@ module.exports = [
     {
         title: "Java 并发编程-锁",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['锁-Lock接口简介', '锁-Lock接口简介'],
             ['锁-AbstractQueuedSynchronizer介绍', '锁-AbstractQueuedSynchronizer介绍'],
@@ -48,7 +48,7 @@ module.exports = [
     {
         title: "Java 并发编程-容器和工具",
         collapsable: false,
-        sidebarDepth: 1,
+        sidebarDepth: 0,
         children: [
             ['并发容器-阻塞队列', '并发容器-阻塞队列'],
             ['jdk1.8-ConcurrentHashMap', 'jdk1.8-ConcurrentHashMap'],
