@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vuepress dev ",
-    "docs:build": "vuepress build "
+    "docs:build": "vuepress build ",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +18,8 @@
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-git-log": "^1.0.1",
     "vuepress-plugin-reading-progress": "^1.0.8",
-    "vuepress-plugin-smooth-scroll": "0.0.9"
+    "vuepress-plugin-smooth-scroll": "0.0.9",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@vuepress/plugin-active-header-links": "^1.3.1",
@@ -29,5 +32,6 @@
     "vuepress-plugin-baidu-autopush": "^1.0.1",
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-gitalk-maker": "^0.1.0"
-  }
+  },
+  "snyk": true
 }
