@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GourdErwa/review-notes.svg?branch=master)](https://travis-ci.org/GourdErwa/review-notes)
+[![Build Status](https://www.travis-ci.com/GourdErwa/review-notes.svg?branch=master)](https://www.travis-ci.com/GourdErwa/review-notes)
 
 该项目用于知识分享。更好的阅读体验，访问 [review-notes.top ](http://review-notes.top/) 。 
 
