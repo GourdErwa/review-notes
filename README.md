@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/GourdErwa/review-notes.svg?branch=master)](https://travis-ci.org/GourdErwa/review-notes)
 
-该项目用于知识分享。更好的阅读体验，访问 [review-notes.top ](http://review-notes.top/)。 
+该项目用于知识分享。更好的阅读体验，访问 [review-notes.top ](http://review-notes.top/) 。 
 
-主要使用 [费曼学习法](/about/学习方法.md) 进行知识分享学习，欢迎 [提交反馈]([issues](https://github.com/GourdErwa/review-notes/issues))。
+主要使用 [费曼学习法](/about/学习方法.md) 进行知识分享学习，欢迎 [提交反馈]([issues](https://github.com/GourdErwa/review-notes/issues)) 。
 
 ## 内容
 - 编程语言
