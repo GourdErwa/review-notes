@@ -4,7 +4,8 @@ module.exports = [
         collapsable: false,
         sidebarDepth: 0,
         children: [
-            // ['集合体系介绍', '集合体系介绍']
+            ['常用命令', '常用命令'],
+            ['多SSH-Key生成及代理配置', '多SSH-Key生成及代理配置']
         ]
     }
 ];
